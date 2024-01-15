@@ -1,2 +1,2 @@
 # Mithril.Hr
-Demo is to illustrate software engineering skills (.NET Core, DDD, TDD).
+Simple Human Resources product to illustrate software engineering skills (.NET Core, DDD, TDD).
