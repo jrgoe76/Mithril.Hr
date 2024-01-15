@@ -3,26 +3,26 @@
 public record Position
 {
     public string PositionCode { get; init; }
-    public string Name { get; private set; }
-    public byte SubordinatesLimit { get; private set; }
+    public string Name { get; init; }
+    public byte SubordinatesLimit { get; init; }
 
     public Position(
-        string code,
+        string positionCode,
         string name,
         byte subordinatesLimit)
     {
         const string errorMessage = $"The {nameof(Position)} is invalid";
 
-        if (string.IsNullOrEmpty(code))
+        if (string.IsNullOrEmpty(positionCode))
         {
-            throw new ArgumentException(errorMessage, nameof(code));
+            throw new ArgumentException(errorMessage, nameof(positionCode));
         }
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException(errorMessage, nameof(name));
         }
 
-        PositionCode = code;
+        PositionCode = positionCode;
         Name = name;
         SubordinatesLimit = subordinatesLimit;
     }

@@ -6,11 +6,11 @@ using Mithril.Hr.Seeds.Employees;
 using Moq;
 using Xunit;
 
-namespace Mithril.Hr.Application.Tests.Employees;
+namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class UpdateEmployeeFeatureTests
 {
-    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
+    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new();
 
     private readonly UpdateEmployeeFeature _feature;
 
