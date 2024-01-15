@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Api", "src\Mithril.Hr.Api\Mithril.Hr.Api.csproj", "{4E0C62FA-DA0D-4B79-A2C2-4BC3CA26F847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr", "src\Mithril.Hr\Mithril.Hr.csproj", "{F2FBA4EA-D844-4194-AF42-C8C5A23F58BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr", "src\Mithril.Hr\Mithril.Hr.csproj", "{F2FBA4EA-D844-4194-AF42-C8C5A23F58BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EACD63D2-7BDC-4D5F-B89E-11C009ECD774}"
 EndProject
@@ -13,18 +13,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{181EB951
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{1ECD61CB-C1FB-4CCF-BC82-F96136502240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Tests", "tests\Mithril.Hr.Tests\Mithril.Hr.Tests.csproj", "{32C5EC06-5B59-4AF8-9B43-ED60DF95D483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Tests", "tests\Mithril.Hr.Tests\Mithril.Hr.Tests.csproj", "{32C5EC06-5B59-4AF8-9B43-ED60DF95D483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Api.Tests", "tests\Mithril.Hr.Api.Tests\Mithril.Hr.Api.Tests.csproj", "{F14ED7BA-8854-4AA0-AFCF-1BB213E6B5C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Api.Tests", "tests\Mithril.Hr.Api.Tests\Mithril.Hr.Api.Tests.csproj", "{F14ED7BA-8854-4AA0-AFCF-1BB213E6B5C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD3996F9-E013-40E0-B1F4-ED605324A7E3}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Application", "src\Mithril.Hr.Application\Mithril.Hr.Application.csproj", "{2AD81A73-31BF-471E-AEB8-415B3CB64850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Application", "src\Mithril.Hr.Application\Mithril.Hr.Application.csproj", "{2AD81A73-31BF-471E-AEB8-415B3CB64850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Application.Tests", "tests\Mithril.Hr.Application.Tests\Mithril.Hr.Application.Tests.csproj", "{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Application.Tests", "tests\Mithril.Hr.Application.Tests\Mithril.Hr.Application.Tests.csproj", "{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Persistence", "src\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj", "{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Persistence.Tests", "tests\Mithril.Hr.Persistence.Tests\Mithril.Hr.Persistence.Tests.csproj", "{C2A19EE9-A97B-4664-BD32-DA909723EEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +60,14 @@ Global
 		{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A19EE9-A97B-4664-BD32-DA909723EEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A19EE9-A97B-4664-BD32-DA909723EEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A19EE9-A97B-4664-BD32-DA909723EEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A19EE9-A97B-4664-BD32-DA909723EEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +79,8 @@ Global
 		{F14ED7BA-8854-4AA0-AFCF-1BB213E6B5C2} = {181EB951-6170-4BE6-B502-7A49CC689102}
 		{2AD81A73-31BF-471E-AEB8-415B3CB64850} = {EACD63D2-7BDC-4D5F-B89E-11C009ECD774}
 		{0CF24FC9-E900-4C6D-AC5C-4B57895D4041} = {181EB951-6170-4BE6-B502-7A49CC689102}
+		{C473822F-9B03-44F0-A08B-8F8E29D4B9EC} = {EACD63D2-7BDC-4D5F-B89E-11C009ECD774}
+		{C2A19EE9-A97B-4664-BD32-DA909723EEFB} = {181EB951-6170-4BE6-B502-7A49CC689102}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5182A81-C446-412D-BB99-C969D78CD896}
