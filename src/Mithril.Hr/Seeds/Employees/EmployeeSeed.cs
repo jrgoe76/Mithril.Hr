@@ -42,4 +42,19 @@ public static class EmployeeSeed
         Position = PositionSeed.ChiefFinancialOfficer,
         SupervisorId = LiamHill.SupervisorId
     };
+
+    public static Employee UpdatedDianaKing = new (
+        DianaKing.EmployeeId,
+        new PersonName(
+            $"updated {DianaKing.Name.FirstName}",
+            "X",
+            $"updated {DianaKing.Name.LastName}"),
+        Gender.Male,
+        new Email($"updated{EmailSeed.DianaKingAtAol}"),
+        AddressSeed.BeachSt,
+        AcademicDegree.Master)
+    {
+        Position = DianaKing.Position,
+        SupervisorId = DianaKing.SupervisorId
+    };
 }

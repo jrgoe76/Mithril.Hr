@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Mithril.Hr\Mithril.Hr.csproj" />
   </ItemGroup>
 
