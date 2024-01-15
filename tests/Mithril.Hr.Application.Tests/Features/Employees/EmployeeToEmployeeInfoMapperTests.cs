@@ -4,7 +4,7 @@ using Mithril.Hr.Application.Seeds.Employees;
 using Mithril.Hr.Seeds.Employees;
 using Xunit;
 
-namespace Mithril.Hr.Application.Tests.Employees;
+namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class EmployeeToEmployeeInfoMapperTests
 {

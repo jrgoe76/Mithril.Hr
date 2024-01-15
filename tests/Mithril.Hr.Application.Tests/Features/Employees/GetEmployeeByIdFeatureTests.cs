@@ -6,7 +6,7 @@ using Mithril.Hr.Seeds.Employees;
 using Moq;
 using Xunit;
 
-namespace Mithril.Hr.Application.Tests.Employees;
+namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class GetEmployeeByIdFeatureTests
 {
