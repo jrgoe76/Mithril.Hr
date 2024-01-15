@@ -12,10 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Mithril.Hr.Application\Mithril.Hr.Application.csproj" />
+    <ProjectReference Include="..\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj" />
     <ProjectReference Include="..\Mithril.Hr\Mithril.Hr.csproj" />
   </ItemGroup>
 
