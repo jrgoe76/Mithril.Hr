@@ -2,12 +2,12 @@
 using Mithril.Hr.Domain.Positions;
 using Xunit;
 
-namespace Mithril.Hr.Tests.Positions;
+namespace Mithril.Hr.Tests.Domain.Positions;
 
 public sealed class PositionTests
 {
-    private const string PositionCode = "CTO";
-    private const string Name = "Chief Technology Officer";
+    private const string PositionCode = "COO";
+    private const string Name = "Chief Operating Officer";
 
     [Fact]
     public void ThrowsArgumentException()

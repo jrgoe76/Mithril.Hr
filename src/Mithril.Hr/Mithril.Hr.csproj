@@ -10,8 +10,4 @@
     <InternalsVisibleTo Include="$(AssemblyName).Tests" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Seeds\Demographics\" />
-  </ItemGroup>
-
 </Project>
