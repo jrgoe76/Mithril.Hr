@@ -2,7 +2,7 @@
 using Mithril.Hr.Domain.Education;
 using Xunit;
 
-namespace Mithril.Hr.Tests.Education;
+namespace Mithril.Hr.Tests.Domain.Education;
 
 public sealed class AcademicDegreeTests
 {
