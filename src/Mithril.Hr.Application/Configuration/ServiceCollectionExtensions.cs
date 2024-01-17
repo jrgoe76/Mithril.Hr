@@ -9,8 +9,8 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services)
         => services
             .AddSingleton<EmployeeToEmployeeInfoMapper>()
-            .AddScoped<IGetAllEmployeesDetailFeature, GetAllEmployeesDetailFeature>()
-            .AddScoped<IGetEmployeeByIdFeature, GetEmployeeByIdFeature>()
-            .AddScoped<IAddEmployeeFeature, AddEmployeeFeature>()
-            .AddScoped<IUpdateEmployeeFeature, UpdateEmployeeFeature>();
+            .AddScoped<GetAllEmployeesDetailFeature>()
+            .AddScoped<GetEmployeeByIdFeature>()
+            .AddScoped<AddEmployeeFeature>()
+            .AddScoped<UpdateEmployeeFeature>();
 }

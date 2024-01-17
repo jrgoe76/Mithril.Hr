@@ -7,7 +7,7 @@ namespace Mithril.Hr.Persistence.Seeds;
 
 public sealed class DbSeeder(
     DataContext dbContext,
-    IAddEmployeeFeature addEmployeeFeature)
+    AddEmployeeFeature addEmployeeFeature)
 {
     public async Task Run()
     {

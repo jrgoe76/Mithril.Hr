@@ -9,6 +9,5 @@ internal sealed class GetEmployeeByIdQuery(
 {
     public async Task<Employee> Get(Guid employeeId)
         => await dbContext.Employees
-            .Include(employee => employee.Position)
             .SingleAsync(employee => employee.EmployeeId == employeeId);
 }

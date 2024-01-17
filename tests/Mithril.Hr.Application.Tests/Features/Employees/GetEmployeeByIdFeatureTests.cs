@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Employees;
-using Mithril.Hr.Application.Seeds.Employees;
 using Mithril.Hr.Domain.Employees;
 using Mithril.Hr.Seeds.Employees;
 using Moq;
@@ -14,14 +13,17 @@ public sealed class GetEmployeeByIdFeatureTests
     public async Task ReturnsEmployeeInfo()
     {
         var getEmployeeByIdQueryMock = new Mock<IGetEmployeeByIdQuery>();
+        var employeeToEmployeeInfoMapper = new EmployeeToEmployeeInfoMapper();
 
-        getEmployeeByIdQueryMock
-            .Setup(query => query.Get(EmployeeSeed.LiamHill.EmployeeId))
-            .ReturnsAsync(EmployeeSeed.LiamHill);
+        var liamHill = EmployeeSeed.LiamHill;
+        var liamHillInfo = employeeToEmployeeInfoMapper.Map(liamHill);
 
+        getEmployeeByIdQueryMock.Setup(liamHill);
+        
         (await new GetEmployeeByIdFeature(
-                getEmployeeByIdQueryMock.Object, new EmployeeToEmployeeInfoMapper())
-            .Get(EmployeeSeed.LiamHill.EmployeeId))
-            .Should().Be(EmployeeInfoSeed.LiamHill);
+                getEmployeeByIdQueryMock.Object, 
+                employeeToEmployeeInfoMapper)
+            .Get(liamHill.EmployeeId))
+            .Should().Be(liamHillInfo);
     }
 }

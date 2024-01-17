@@ -11,10 +11,10 @@ public sealed class EmployeeToEmployeeInfoMapperTests
     [Fact]
     public void MapsEmployeeToEmployeeInfo()
     {
-        var employee = EmployeeSeed.LiamHill;
-        var employeeInfo = EmployeeInfoSeed.LiamHill;
+        var liamHill = EmployeeSeed.LiamHill;
+        var liamHillInfo = EmployeeInfoSeed.LiamHill;
 
-        new EmployeeToEmployeeInfoMapper().Map(employee)
-            .Should().Be(employeeInfo);
+        new EmployeeToEmployeeInfoMapper().Map(liamHill)
+            .Should().Be(liamHillInfo);
     }
 }

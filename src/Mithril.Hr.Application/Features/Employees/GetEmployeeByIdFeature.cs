@@ -2,9 +2,9 @@
 
 namespace Mithril.Hr.Application.Features.Employees;
 
-internal class GetEmployeeByIdFeature(
+public sealed class GetEmployeeByIdFeature(
     IGetEmployeeByIdQuery getEmployeeByIdQuery,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper) : IGetEmployeeByIdFeature
+    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
 {
     public async Task<EmployeeInfo> Get(Guid employeeId)
         => employeeToEmployeeInfoMapper

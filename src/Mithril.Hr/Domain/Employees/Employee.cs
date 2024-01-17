@@ -7,13 +7,12 @@ namespace Mithril.Hr.Domain.Employees;
 public record Employee
 {
     public Guid EmployeeId { get; init; }
-    public PersonName Name { get; internal set; }
-    public Gender Gender { get; internal set; }
-    public Email Email { get; internal set; }
-    public Address Address { get; internal set; }
-    public AcademicDegree Degree { get; internal set; }
-    public Position? Position { get; internal set; }
-    public Guid? SupervisorId { get; internal set; }
+    public PersonName Name { get; private set; }
+    public Gender Gender { get; private set; }
+    public Email Email { get; private set; }
+    public Address Address { get; private set; }
+    public AcademicDegree Degree { get; private set; }
+    public Contract? Contract { get; internal set; }
 
     public Employee(
         Guid employeeId,
@@ -59,9 +58,8 @@ public record Employee
         Degree = degree;
     }
 
-    public void AssignPosition(Position position, Employee supervisor)
+    public void AssignContract(Position position, Guid supervisorId, DateOnly startDate)
     {
-        Position = position;
-        SupervisorId = supervisor.SupervisorId;
+        Contract = new Contract(position, supervisorId, startDate);
     }
 }

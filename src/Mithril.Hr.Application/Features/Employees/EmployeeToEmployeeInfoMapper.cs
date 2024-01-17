@@ -12,7 +12,5 @@ public sealed class EmployeeToEmployeeInfoMapper
             employee.Email.Address, employee.Address.AddressLine1, employee.Address.AddressLine2,
             employee.Address.City, employee.Address.State,
             employee.Address.Zipcode,
-            employee.Degree.ToString(),
-            employee.Position?.PositionCode,
-            employee.SupervisorId);
+            employee.Degree.ToString());
 }

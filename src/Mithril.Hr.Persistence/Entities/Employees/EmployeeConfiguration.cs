@@ -71,12 +71,7 @@ internal sealed class EmployeeConfiguration(
             .HasMaxLength(2)
             .HasConversion(academicDegreeConverter);
 
-        builder.Property(entity => entity.PositionCode)
-            .HasMaxLength(10);
-        builder.HasOne(entity => entity.Position)
-            .WithMany()
-            .HasForeignKey(entity => entity.PositionCode)
-            .OnDelete(DeleteBehavior.NoAction);
+        builder.Ignore(entity => entity.Contract);
 
         builder.Property(entity => entity.Version)
             .IsRequired()

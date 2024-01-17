@@ -3,8 +3,8 @@
 namespace Mithril.Hr.Application.Features.Employees;
 
 [ExcludeFromCodeCoverage]
-internal sealed class GetAllEmployeesDetailFeature(
-    IGetAllEmployeesDetailQuery getAllEmployeesDetailQuery) : IGetAllEmployeesDetailFeature
+public sealed class GetAllEmployeesDetailFeature(
+    IGetAllEmployeesDetailQuery getAllEmployeesDetailQuery)
 {
     public Task<ICollection<EmployeeDetail>> Get()
         => getAllEmployeesDetailQuery.Get();
