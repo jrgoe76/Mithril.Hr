@@ -4,12 +4,10 @@ public record Position
 {
     public string PositionCode { get; init; }
     public string Name { get; init; }
-    public byte SubordinatesLimit { get; init; }
 
     public Position(
         string positionCode,
-        string name,
-        byte subordinatesLimit)
+        string name)
     {
         const string errorMessage = $"The {nameof(Position)} is invalid";
 
@@ -24,7 +22,6 @@ public record Position
 
         PositionCode = positionCode;
         Name = name;
-        SubordinatesLimit = subordinatesLimit;
     }
 
     public override string ToString()
