@@ -1,9 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Mithril.Hr.Persistence.Configuration;
 using Mithril.Hr.Persistence.Data;
-using Mithril.Hr.Persistence.Entities.Demographics;
-using Mithril.Hr.Persistence.Entities.Education;
-using Moq;
 
 namespace Mithril.Hr.Persistence.Tests.Helpers;
 
@@ -20,7 +19,9 @@ internal sealed class DbContextTestFactory : IDisposable
         var options = new DbContextOptionsBuilder<DataContext>()
             .UseSqlite(_dbConnection)
             .Options;
-        var serviceProvider = GetServiceProvider();
+        var serviceProvider = new ServiceCollection()
+            .AddPersistenceConfiguration()
+            .BuildServiceProvider();
 
         var dbContext = new DataContextSpy(options, serviceProvider);
 
@@ -47,19 +48,5 @@ internal sealed class DbContextTestFactory : IDisposable
     {
         connection.Close();
         connection.Dispose();
-    }
-
-    private static IServiceProvider GetServiceProvider()
-    {
-        var serviceProvider = new Mock<IServiceProvider>();
-
-        serviceProvider
-            .Setup(provider => provider.GetService(typeof(GenderMapper)))
-            .Returns(new GenderMapper());
-        serviceProvider
-            .Setup(provider => provider.GetService(typeof(AcademicDegreeMapper)))
-            .Returns(new AcademicDegreeMapper());
-
-        return serviceProvider.Object;
     }
 }
