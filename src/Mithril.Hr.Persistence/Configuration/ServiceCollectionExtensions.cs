@@ -32,9 +32,10 @@ public static class ServiceCollectionExtensions
             .AddSingleton<AcademicDegreeMapper>()
             .AddScoped<AcademicDegreeConverter>()
 
+            .AddScoped<PositionConfiguration>()
             .AddScoped<EmployeeConfiguration>()
-            .AddScoped<PositionConfiguration>();
-    
+            .AddScoped<ContractConfiguration>();
+
     public static IServiceCollection AddPersistence(
         this IServiceCollection services)
         => services

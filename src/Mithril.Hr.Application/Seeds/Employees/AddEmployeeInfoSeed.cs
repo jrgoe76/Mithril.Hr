@@ -5,7 +5,7 @@ namespace Mithril.Hr.Application.Seeds.Employees;
 
 public static class AddEmployeeInfoSeed
 {
-    public static AddEmployeeInfo LiamHill = new (
+    public static AddEmployeeInfo LiamHill => new (
         EmployeeSeed.LiamHill.Name.FirstName,
         EmployeeSeed.LiamHill.Name.MiddleInitial,
         EmployeeSeed.LiamHill.Name.LastName,
@@ -18,7 +18,7 @@ public static class AddEmployeeInfoSeed
         EmployeeSeed.LiamHill.Address.Zipcode,
         EmployeeSeed.LiamHill.Degree.ToString());
 
-    public static AddEmployeeInfo PaulaCarr = new (
+    public static AddEmployeeInfo PaulaCarr => new (
         EmployeeSeed.PaulaCarr.Name.FirstName,
         EmployeeSeed.PaulaCarr.Name.MiddleInitial,
         EmployeeSeed.PaulaCarr.Name.LastName,
@@ -31,7 +31,7 @@ public static class AddEmployeeInfoSeed
         EmployeeSeed.PaulaCarr.Address.Zipcode,
         EmployeeSeed.PaulaCarr.Degree.ToString());
 
-    public static AddEmployeeInfo DianaKing = new (
+    public static AddEmployeeInfo DianaKing => new (
         EmployeeSeed.DianaKing.Name.FirstName,
         EmployeeSeed.DianaKing.Name.MiddleInitial,
         EmployeeSeed.DianaKing.Name.LastName,

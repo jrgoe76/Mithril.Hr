@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Employees;
-using Mithril.Hr.Application.Seeds.Employees;
+using Mithril.Hr.Application.Tests.Seeds.Employees;
 using Mithril.Hr.Domain.Employees;
 using Mithril.Hr.Seeds.Employees;
+using Mithril.Hr.Tests.Seeds.Employees;
 using Moq;
 using Xunit;
 
@@ -10,35 +11,45 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class UpdateEmployeeFeatureTests
 {
-    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new();
+    private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new();
+    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
+    private readonly EmployeeToEmployeeInfoMapper _employeeToEmployeeInfoMapper = new ();
 
     private readonly UpdateEmployeeFeature _feature;
 
     public UpdateEmployeeFeatureTests()
     {
-        var getEmployeeByIdQueryMock = new Mock<IGetEmployeeByIdQuery>();
-
-        getEmployeeByIdQueryMock
-            .Setup(query => query.Get(EmployeeSeed.DianaKing.EmployeeId))
-            .ReturnsAsync(EmployeeSeed.DianaKing);
-
-        _feature = new UpdateEmployeeFeature(getEmployeeByIdQueryMock.Object,
-            _employeeRepositoryMock.Object, new EmployeeToEmployeeInfoMapper());
+        _feature = new UpdateEmployeeFeature(
+            _getEmployeeByIdQueryMock.Object,
+            _employeeRepositoryMock.Object,
+            _employeeToEmployeeInfoMapper);
     }
 
     [Fact]
     public async Task ReturnsEmployeeInfo()
     {
-        (await _feature.Update(UpdateEmployeeInfoSeed.DianaKing))
-            .Should().Be(EmployeeInfoSeed.UpdatedDianaKing);
+        var dianaKing = EmployeeSeed.DianaKing;
+        var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
+        var updatedDianaKingInfo = _employeeToEmployeeInfoMapper.Map(EmployeeTestSeed.UpdatedDianaKing);
+
+        _getEmployeeByIdQueryMock.Setup(dianaKing);
+
+        (await _feature.Update(dianaKingUpdateInfo))
+            .Should().Be(updatedDianaKingInfo);
     }
 
     [Fact]
     public async Task UpdatesEmployeeInRepository()
     {
-        await _feature.Update(UpdateEmployeeInfoSeed.DianaKing);
+        var dianaKing = EmployeeSeed.DianaKing;
+        var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
+        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing;
+
+        _getEmployeeByIdQueryMock.Setup(dianaKing);
+
+        await _feature.Update(dianaKingUpdateInfo);
 
         _employeeRepositoryMock
-            .Verify(repository => repository.Update(EmployeeSeed.UpdatedDianaKing), Times.Once);
+            .Verify(repository => repository.Update(updatedDianaKing), Times.Once);
     }
 }

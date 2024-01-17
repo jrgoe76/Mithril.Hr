@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mithril.Hr.Api\Mithril.Hr.Api.csproj" />
     <ProjectReference Include="..\..\src\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj" />
+    <ProjectReference Include="..\Mithril.Hr.Application.Tests\Mithril.Hr.Application.Tests.csproj" />
     <ProjectReference Include="..\Mithril.Hr.Persistence.Tests\Mithril.Hr.Persistence.Tests.csproj" />
   </ItemGroup>
 

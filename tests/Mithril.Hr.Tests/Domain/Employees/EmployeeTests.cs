@@ -62,15 +62,18 @@ public sealed class EmployeeTests
     }
 
     [Fact]
-    public void AssignsPosition()
+    public void AssignsContract()
     {
+        var contract = new Contract(
+            PositionSeed.ChiefFinancialOfficer,
+            EmployeeSeed.LiamHill.EmployeeId,
+            DateOnly.FromDateTime(DateTime.Today));
+
         var employee = new Employee(Guid.NewGuid(), _name, _gender, _email, _address, _degree);
 
-        employee.AssignPosition(PositionSeed.ChiefFinancialOfficer, EmployeeSeed.LiamHill);
+        employee.AssignContract(contract.Position, contract.SupervisorId, contract.StartDate);
 
-        employee.Position
-            .Should().Be(PositionSeed.ChiefFinancialOfficer);
-        employee.SupervisorId
-            .Should().Be(EmployeeSeed.LiamHill.SupervisorId);
+        employee.Contract
+            .Should().Be(contract);
     }
 }

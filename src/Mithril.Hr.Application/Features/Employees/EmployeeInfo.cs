@@ -15,6 +15,8 @@ public sealed record EmployeeInfo(
     string City,
     string State,
     string Zipcode,
-    string Degree,
-    string? Position,
-    Guid? SupervisorId);
+    string Degree)
+{
+    public string? PositionCode { get; set; }
+    public Guid? SupervisorId { get; set; }
+}

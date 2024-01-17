@@ -5,11 +5,11 @@ using Mithril.Hr.Domain.Employees;
 
 namespace Mithril.Hr.Application.Features.Employees;
 
-internal sealed class AddEmployeeFeature(
+public sealed class AddEmployeeFeature(
     IIdGenerator idGenerator,
     IEmployeeCtr employeeCtr,
     IEmployeeRepository employeeRepository,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper) : IAddEmployeeFeature
+    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
 {
     public async Task<EmployeeInfo> Add(AddEmployeeInfo addEmployeeInfo)
     {

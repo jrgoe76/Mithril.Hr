@@ -4,10 +4,10 @@ using Mithril.Hr.Domain.Employees;
 
 namespace Mithril.Hr.Application.Features.Employees;
 
-internal sealed class UpdateEmployeeFeature(
+public sealed class UpdateEmployeeFeature(
     IGetEmployeeByIdQuery getEmployeeByIdQuery,
     IEmployeeRepository employeeRepository,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper) : IUpdateEmployeeFeature
+    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
 {
     public async Task<EmployeeInfo> Update(UpdateEmployeeInfo updateEmployeeInfo)
     {

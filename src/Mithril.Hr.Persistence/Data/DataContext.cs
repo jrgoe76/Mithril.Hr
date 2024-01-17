@@ -12,17 +12,16 @@ public class DataContext(
     DbContextOptions<DataContext> options,
     IServiceProvider serviceProvider) : DbContext(options)
 {
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    public DbSet<EmployeeEntity> Employees { get; set; }
-    public DbSet<Position> Positions { get; set; }
-#pragma warning restore CS8618
+    public DbSet<Position> Positions { get; set; } = null!;
+    public DbSet<EmployeeEntity> Employees { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfiguration(GetService<EmployeeConfiguration>());
         modelBuilder.ApplyConfiguration(GetService<PositionConfiguration>());
+        modelBuilder.ApplyConfiguration(GetService<EmployeeConfiguration>());
+        modelBuilder.ApplyConfiguration(GetService<ContractConfiguration>());
     }
 
     private T GetService<T>()

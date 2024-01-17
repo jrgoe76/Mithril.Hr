@@ -6,10 +6,10 @@ namespace Mithril.Hr.Api.Controllers;
 [ApiController]
 [Route("employees")]
 public sealed class EmployeesController(
-    IGetAllEmployeesDetailFeature getAllEmployeesDetailFeature,
-    IGetEmployeeByIdFeature getEmployeeByIdFeature,
-    IAddEmployeeFeature addEmployeeFeature,
-    IUpdateEmployeeFeature updateEmployeeFeature) : ControllerBase
+    GetAllEmployeesDetailFeature getAllEmployeesDetailFeature,
+    GetEmployeeByIdFeature getEmployeeByIdFeature,
+    AddEmployeeFeature addEmployeeFeature,
+    UpdateEmployeeFeature updateEmployeeFeature) : ControllerBase
 {
     [HttpGet]
     public Task<ICollection<EmployeeDetail>> GetAll()

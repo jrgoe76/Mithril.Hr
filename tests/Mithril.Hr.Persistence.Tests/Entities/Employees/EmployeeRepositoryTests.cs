@@ -26,16 +26,17 @@ public sealed class EmployeeRepositoryTests
     [Fact]
     public async Task UpdatesEmployeeInDbContext()
     {
-        var latestVersion = EmployeeEntitySeed.LiamHill.Version;
+        var liamHill = EmployeeEntitySeed.LiamHill;
+        var latestVersion = liamHill.Version;
 
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-        await dbContext.Employees.AddAsync(EmployeeEntitySeed.LiamHill);
+        await dbContext.Employees.AddAsync(liamHill);
         await dbContext.SaveChangesAsync();
         dbContext.ResetChangesAreSaved();
 
-        await new EmployeeRepository(dbContext).Update(EmployeeEntitySeed.LiamHill);
+        await new EmployeeRepository(dbContext).Update(liamHill);
 
         (await dbContext.Employees.FirstAsync()).Version
             .Should().NotBe(latestVersion);

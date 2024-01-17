@@ -21,7 +21,5 @@ public record EmployeeEntity : Employee
     {
     }
 
-    public string? PositionCode { get; set; } = null!;
-
     public Guid Version { get; set; }
 }
