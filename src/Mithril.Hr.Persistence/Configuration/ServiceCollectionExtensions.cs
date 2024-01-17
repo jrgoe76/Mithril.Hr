@@ -24,11 +24,21 @@ public static class ServiceCollectionExtensions
             .AddDbContext<DataContext>(
                 (provider, options) => options.UseSqlite(provider.GetRequiredService<DbConnection>()));
 
-    public static IServiceCollection AddPersistence(
+    public static IServiceCollection AddPersistenceConfiguration(
         this IServiceCollection services)
         => services
             .AddSingleton<GenderMapper>()
+            .AddScoped<GenderConverter>()
             .AddSingleton<AcademicDegreeMapper>()
+            .AddScoped<AcademicDegreeConverter>()
+
+            .AddScoped<EmployeeConfiguration>()
+            .AddScoped<PositionConfiguration>();
+    
+    public static IServiceCollection AddPersistence(
+        this IServiceCollection services)
+        => services
+            .AddPersistenceConfiguration()
 
             .AddScoped<IGetPositionByCodeQuery, GetPositionByCodeQuery>()
 

@@ -8,8 +8,8 @@ namespace Mithril.Hr.Persistence.Entities.Employees;
 
 [ExcludeFromCodeCoverage]
 internal sealed class EmployeeConfiguration(
-    GenderMapper genderMapper,
-    AcademicDegreeMapper academicDegreeMapper) : IEntityTypeConfiguration<EmployeeEntity>
+    GenderConverter genderConverter,
+    AcademicDegreeConverter academicDegreeConverter) : IEntityTypeConfiguration<EmployeeEntity>
 {
     public void Configure(EntityTypeBuilder<EmployeeEntity> builder)
     {
@@ -35,7 +35,7 @@ internal sealed class EmployeeConfiguration(
 
         builder.Property(entity => entity.Gender)
             .IsRequired()
-            .HasConversion(new GenderConverter(genderMapper));
+            .HasConversion(genderConverter);
 
         builder.ComplexProperty(entity => entity.Email)
             .IsRequired();
@@ -69,7 +69,7 @@ internal sealed class EmployeeConfiguration(
         builder.Property(entity => entity.Degree)
             .IsRequired()
             .HasMaxLength(2)
-            .HasConversion(new AcademicDegreeConverter(academicDegreeMapper));
+            .HasConversion(academicDegreeConverter);
 
         builder.Property(entity => entity.PositionCode)
             .HasMaxLength(10);

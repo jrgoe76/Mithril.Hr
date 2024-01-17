@@ -19,6 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Api.Tests", "tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD3996F9-E013-40E0-B1F4-ED605324A7E3}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -26,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Application", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Application.Tests", "tests\Mithril.Hr.Application.Tests\Mithril.Hr.Application.Tests.csproj", "{0CF24FC9-E900-4C6D-AC5C-4B57895D4041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Persistence", "src\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj", "{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Persistence", "src\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj", "{C473822F-9B03-44F0-A08B-8F8E29D4B9EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mithril.Hr.Persistence.Tests", "tests\Mithril.Hr.Persistence.Tests\Mithril.Hr.Persistence.Tests.csproj", "{C2A19EE9-A97B-4664-BD32-DA909723EEFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mithril.Hr.Persistence.Tests", "tests\Mithril.Hr.Persistence.Tests\Mithril.Hr.Persistence.Tests.csproj", "{C2A19EE9-A97B-4664-BD32-DA909723EEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

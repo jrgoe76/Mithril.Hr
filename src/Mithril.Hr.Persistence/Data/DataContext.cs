@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mithril.Hr.Domain.Positions;
-using Mithril.Hr.Persistence.Entities.Demographics;
-using Mithril.Hr.Persistence.Entities.Education;
 using Mithril.Hr.Persistence.Entities.Employees;
 using Mithril.Hr.Persistence.Entities.Positions;
 using System.Diagnostics.CodeAnalysis;
@@ -23,10 +21,8 @@ public class DataContext(
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfiguration(new EmployeeConfiguration(
-            GetService<GenderMapper>(),
-            GetService<AcademicDegreeMapper>()));
-        modelBuilder.ApplyConfiguration(new PositionConfiguration());
+        modelBuilder.ApplyConfiguration(GetService<EmployeeConfiguration>());
+        modelBuilder.ApplyConfiguration(GetService<PositionConfiguration>());
     }
 
     private T GetService<T>()
