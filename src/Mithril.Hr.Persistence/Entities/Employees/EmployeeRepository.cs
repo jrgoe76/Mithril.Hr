@@ -1,25 +1,36 @@
-﻿using Mithril.Hr.Domain.Employees;
+﻿using Microsoft.EntityFrameworkCore;
+using Mithril.Hr.Domain.Employees;
 using Mithril.Hr.Persistence.Data;
+using Mithril.Hr.Persistence.Entities.Demographics;
+using Mithril.Hr.Persistence.Entities.Education;
 
 namespace Mithril.Hr.Persistence.Entities.Employees;
 
 internal sealed class EmployeeRepository(
-    DataContext dbContext) : IEmployeeRepository
+    DataContext dbContext,
+    GenderMapper genderMapper,
+    AcademicDegreeMapper academicDegreeMapper) : IEmployeeRepository
 {
     public async Task Add(Employee employee)
     {
-        var entity = (EmployeeEntity)employee;
-        entity.Version = Guid.NewGuid();
+        var employeeEntity = new EmployeeEntity();
 
-        await dbContext.Employees.AddAsync(entity);
+        employeeEntity.Update(employee, genderMapper, academicDegreeMapper);
+        employeeEntity.Version = Guid.NewGuid();
+
+        await dbContext.Employees.AddAsync(employeeEntity);
         await dbContext.SaveChangesAsync();
     }
 
     public async Task Update(Employee employee)
     {
-        var entity = (EmployeeEntity)employee;
-        entity.Version = Guid.NewGuid();
+	    var employeeEntity = await dbContext.Employees
+		    .SingleAsync(entity => entity.EmployeeId == employee.EmployeeId);
 
+	    employeeEntity.Update(employee, genderMapper, academicDegreeMapper);
+	    employeeEntity.Version = Guid.NewGuid();
+
+        dbContext.Attach(employeeEntity);
         await dbContext.SaveChangesAsync();
     }
 }

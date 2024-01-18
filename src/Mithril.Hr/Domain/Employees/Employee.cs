@@ -37,13 +37,6 @@ public record Employee
         Degree = degree ?? throw new ArgumentException(errorMessage, nameof(email));
     }
 
-    // Only for EF Core use.
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    protected Employee()
-#pragma warning restore CS8618
-    {
-    }
-
     public void Update(
         PersonName name,
         Gender gender,

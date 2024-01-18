@@ -2,7 +2,7 @@
 
 namespace Mithril.Hr.Persistence.Entities.Education;
 
-internal sealed class AcademicDegreeMapper
+public sealed class AcademicDegreeMapper
 {
     internal static class Codes
     {
@@ -21,11 +21,11 @@ internal sealed class AcademicDegreeMapper
             { Codes.PhD, AcademicDegree.Values.PhD }
         };
 
+    public AcademicDegree Map(string code)
+	    => new(GetAcademicDegree(code));
+
     public string MapCode(AcademicDegree academicDegree)
         => GetCode(academicDegree);
-
-    public AcademicDegree MapAcademicDegree(string code)
-        => new(GetAcademicDegree(code));
 
     private string GetCode(AcademicDegree academicDegree)
         => _codeToValueDictionary

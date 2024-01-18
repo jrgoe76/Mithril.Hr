@@ -22,16 +22,8 @@ public sealed class AddEmployeeFeatureTests
 
     public AddEmployeeFeatureTests()
     {
-        var employeeCtrMock = new Mock<IEmployeeCtr>();
-
-        employeeCtrMock
-            .Setup(ctr => ctr.New(_paulaCarr.EmployeeId, _paulaCarr.Name, _paulaCarr.Gender,
-                _paulaCarr.Email, _paulaCarr.Address, _paulaCarr.Degree))
-            .Returns(_paulaCarr);
-
         _feature = new AddEmployeeFeature(
             _idGeneratorMock.Object,
-            employeeCtrMock.Object,
             _employeeRepositoryMock.Object,
             _employeeToEmployeeInfoMapper);
     }

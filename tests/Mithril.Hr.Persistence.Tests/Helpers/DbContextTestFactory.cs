@@ -1,7 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Mithril.Hr.Persistence.Configuration;
 using Mithril.Hr.Persistence.Data;
 
 namespace Mithril.Hr.Persistence.Tests.Helpers;
@@ -19,11 +17,8 @@ internal sealed class DbContextTestFactory : IDisposable
         var options = new DbContextOptionsBuilder<DataContext>()
             .UseSqlite(_dbConnection)
             .Options;
-        var serviceProvider = new ServiceCollection()
-            .AddPersistenceConfiguration()
-            .BuildServiceProvider();
 
-        var dbContext = new DataContextSpy(options, serviceProvider);
+        var dbContext = new DataContextSpy(options);
 
         dbContext.Database
             .EnsureCreated();
