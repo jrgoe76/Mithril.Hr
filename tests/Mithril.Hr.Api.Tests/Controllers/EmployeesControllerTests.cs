@@ -13,7 +13,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     public async Task GetsAllEmployees()
     {
         var liamHill = EmployeeEntitySeed.LiamHill;
-        var liamHillDetail = EmployeeDetailSeed.LiamHill;
+        var liamHillDetail = EmployeeDetailTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
         await DbContext.SaveChangesAsync();
@@ -31,7 +31,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     public async Task GetsEmployeeById()
     {
         var liamHill = EmployeeEntitySeed.LiamHill;
-        var liamHillInfo = EmployeeInfoSeed.LiamHill;
+        var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
         await DbContext.SaveChangesAsync();

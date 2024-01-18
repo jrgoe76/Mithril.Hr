@@ -9,30 +9,25 @@ namespace Mithril.Hr.Tests.Seeds.Employees;
 
 public static class EmployeeTestSeed
 {
-    private static readonly Employee DianaKing = EmployeeSeed.DianaKing;
+	private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
+    private static readonly Employee _dianaKing = EmployeeSeed.DianaKing();
 
-    public static Employee UpdatedDianaKing => new (
-        DianaKing.EmployeeId,
+    public static Employee UpdatedDianaKing() => new (
+	    _dianaKing.EmployeeId,
         new PersonName(
-            $"updated {DianaKing.Name.FirstName}",
+            $"updated {_dianaKing.Name.FirstName}",
             "X",
-            $"updated {DianaKing.Name.LastName}"),
+            $"updated {_dianaKing.Name.LastName}"),
         Gender.Male,
         new Email($"updated{EmailSeed.DianaKingAtAol}"),
         AddressSeed.BeachSt,
         AcademicDegree.Master);
 
-    public static Func<DateOnly, Employee> DianaKingWithContract = startDate => new Employee(
-        DianaKing.EmployeeId,
-        DianaKing.Name,
-        DianaKing.Gender,
-        DianaKing.Email,
-        DianaKing.Address,
-        DianaKing.Degree)
-        {   
-            Contract = new Contract(
-                PositionSeed.ChiefFinancialOfficer,
-                EmployeeSeed.LiamHill.EmployeeId,
-                startDate)
-        };
+    public static Employee DianaKingWithContract(DateOnly startDate) 
+	    => new (_dianaKing.EmployeeId, _dianaKing.Name, _dianaKing.Gender,
+		    _dianaKing.Email, _dianaKing.Address, _dianaKing.Degree)
+	        {
+	            Contract = new Contract(PositionSeed.ChiefFinancialOfficer, 
+		            _liamHill.EmployeeId, startDate)
+	        };
 }

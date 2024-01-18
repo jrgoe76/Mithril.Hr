@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Mithril.Hr.Application.Seeds.Employees;
+using Mithril.Hr.Application.Tests.Seeds.Employees;
 using Mithril.Hr.Persistence.Entities.Employees;
 using Mithril.Hr.Persistence.Seeds.Employees;
 using Mithril.Hr.Persistence.Tests.Helpers;
@@ -19,6 +19,6 @@ public sealed class GetAllEmployeesDetailQueryTests
         await dbContext.SaveChangesAsync();
 
         (await new GetAllEmployeesDetailQuery(dbContext).Get())
-            .Should().BeEquivalentTo(new[] { EmployeeDetailSeed.LiamHill });
+            .Should().BeEquivalentTo(new[] { EmployeeDetailTestSeed.LiamHill });
     }
 }

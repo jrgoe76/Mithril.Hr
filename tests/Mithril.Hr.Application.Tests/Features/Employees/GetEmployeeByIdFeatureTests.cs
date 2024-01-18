@@ -15,7 +15,7 @@ public sealed class GetEmployeeByIdFeatureTests
         var getEmployeeByIdQueryMock = new Mock<IGetEmployeeByIdQuery>();
         var employeeToEmployeeInfoMapper = new EmployeeToEmployeeInfoMapper();
 
-        var liamHill = EmployeeSeed.LiamHill;
+        var liamHill = EmployeeSeed.LiamHill();
         var liamHillInfo = employeeToEmployeeInfoMapper.Map(liamHill);
 
         getEmployeeByIdQueryMock.Setup(liamHill);

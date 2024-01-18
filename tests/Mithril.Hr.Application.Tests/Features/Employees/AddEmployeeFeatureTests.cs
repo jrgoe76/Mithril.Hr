@@ -11,7 +11,7 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class AddEmployeeFeatureTests
 {
-    private readonly Employee _paulaCarr = EmployeeSeed.PaulaCarr;
+    private readonly Employee _paulaCarr = EmployeeSeed.PaulaCarr();
     private readonly AddEmployeeInfo _paulaCarrAddInfo = AddEmployeeInfoSeed.PaulaCarr;
 
     private readonly Mock<IIdGenerator> _idGeneratorMock = new ();
