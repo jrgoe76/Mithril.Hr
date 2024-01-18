@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Mithril.Hr.Domain.Positions;
 using Mithril.Hr.Persistence.Entities.Employees;
 using Mithril.Hr.Persistence.Entities.Positions;
 
@@ -9,22 +7,16 @@ namespace Mithril.Hr.Persistence.Data;
 
 [ExcludeFromCodeCoverage]
 public class DataContext(
-    DbContextOptions<DataContext> options,
-    IServiceProvider serviceProvider) : DbContext(options)
+    DbContextOptions<DataContext> options) : DbContext(options)
 {
-    public DbSet<Position> Positions { get; set; } = null!;
+    public DbSet<PositionEntity> Positions { get; set; } = null!;
     public DbSet<EmployeeEntity> Employees { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfiguration(GetService<PositionConfiguration>());
-        modelBuilder.ApplyConfiguration(GetService<EmployeeConfiguration>());
-        modelBuilder.ApplyConfiguration(GetService<ContractConfiguration>());
+        modelBuilder.ApplyConfigurationsFromAssembly(
+	        typeof(DataContext).Assembly);
     }
-
-    private T GetService<T>()
-        where T : class
-        => serviceProvider.GetRequiredService<T>();
 }

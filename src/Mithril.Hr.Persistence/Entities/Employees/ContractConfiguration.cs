@@ -15,7 +15,7 @@ internal sealed class ContractConfiguration : IEntityTypeConfiguration<ContractE
             .IsRequired()
             .ValueGeneratedNever();
         builder.HasOne(entity => entity.Employee)
-            .WithOne()
+            .WithOne(entity => entity.Contract)
             .HasForeignKey<ContractEntity>(entity => entity.EmployeeId);
     }
 }

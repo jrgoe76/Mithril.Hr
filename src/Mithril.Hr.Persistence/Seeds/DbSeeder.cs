@@ -14,25 +14,25 @@ public sealed class DbSeeder(
         await dbContext.Database.EnsureCreatedAsync();
 
         await SeedPositions();
-        await RunAddEmployeeFeatures();
+        await SeedEmployees();
     }
 
     private async Task SeedPositions()
     {
-        await dbContext.Positions.AddRangeAsync(
-            PositionSeed.ChiefExecutiveOfficer,
-            PositionSeed.ChiefFinancialOfficer,
-            PositionSeed.AccountingManager,
-            PositionSeed.Accountant,
-            PositionSeed.ChiefOperatingOfficer,
-            PositionSeed.StoreManager,
-            PositionSeed.SectionLeader,
-            PositionSeed.StockAssistant);
+        //await dbContext.Positions.AddRangeAsync(
+        //    PositionSeed.ChiefExecutiveOfficer,
+        //    PositionSeed.ChiefFinancialOfficer,
+        //    PositionSeed.AccountingManager,
+        //    PositionSeed.Accountant,
+        //    PositionSeed.ChiefOperatingOfficer,
+        //    PositionSeed.StoreManager,
+        //    PositionSeed.SectionLeader,
+        //    PositionSeed.StockAssistant);
 
         await dbContext.SaveChangesAsync();
     }
 
-    private async Task RunAddEmployeeFeatures()
+    private async Task SeedEmployees()
     {
         await addEmployeeFeature.Add(AddEmployeeInfoSeed.LiamHill);
         await addEmployeeFeature.Add(AddEmployeeInfoSeed.PaulaCarr);

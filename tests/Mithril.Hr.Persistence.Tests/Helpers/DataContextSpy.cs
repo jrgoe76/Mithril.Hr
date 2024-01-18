@@ -4,8 +4,7 @@ using Mithril.Hr.Persistence.Data;
 namespace Mithril.Hr.Persistence.Tests.Helpers;
 
 internal sealed class DataContextSpy(
-    DbContextOptions<DataContext> options,
-    IServiceProvider serviceProvider) : DataContext(options, serviceProvider)
+    DbContextOptions<DataContext> options) : DataContext(options)
 {
     public bool ChangesAreSaved { get; private set; }
 
@@ -17,7 +16,7 @@ internal sealed class DataContextSpy(
         return base.SaveChangesAsync(cancellationToken);
     }
 
-    public void ResetChangesAreSaved()
+    public void ResetStates()
     {
         ChangesAreSaved = false;
     }

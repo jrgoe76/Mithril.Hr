@@ -24,29 +24,23 @@ public static class ServiceCollectionExtensions
             .AddDbContext<DataContext>(
                 (provider, options) => options.UseSqlite(provider.GetRequiredService<DbConnection>()));
 
-    public static IServiceCollection AddPersistenceConfiguration(
+	public static IServiceCollection AddPersistence(
         this IServiceCollection services)
         => services
-            .AddSingleton<GenderMapper>()
-            .AddScoped<GenderConverter>()
-            .AddSingleton<AcademicDegreeMapper>()
-            .AddScoped<AcademicDegreeConverter>()
+	        .AddSingleton<GenderMapper>()
+	        .AddSingleton<AcademicDegreeMapper>()
 
-            .AddScoped<PositionConfiguration>()
+	        .AddScoped<PositionConfiguration>()
+	        .AddSingleton<PositionMapper>()
+	        .AddScoped<IGetPositionByCodeQuery, GetPositionByCodeQuery>()
+
             .AddScoped<EmployeeConfiguration>()
-            .AddScoped<ContractConfiguration>();
-
-    public static IServiceCollection AddPersistence(
-        this IServiceCollection services)
-        => services
-            .AddPersistenceConfiguration()
-
-            .AddScoped<IGetPositionByCodeQuery, GetPositionByCodeQuery>()
-
-            .AddSingleton<IEmployeeCtr, EmployeeCtr>()
+	        .AddSingleton<EmployeeMapper>()
             .AddScoped<IGetAllEmployeesDetailQuery, GetAllEmployeesDetailQuery>()
             .AddScoped<IGetEmployeeByIdQuery, GetEmployeeByIdQuery>()
-            .AddScoped<IEmployeeRepository, EmployeeRepository>();
+            .AddScoped<IEmployeeRepository, EmployeeRepository>()
+
+	        .AddScoped<ContractConfiguration>();
 
     private static SqliteConnection CreateInitializedDbConnection()
     {

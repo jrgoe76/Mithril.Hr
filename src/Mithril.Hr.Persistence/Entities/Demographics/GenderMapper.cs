@@ -2,7 +2,7 @@
 
 namespace Mithril.Hr.Persistence.Entities.Demographics;
 
-internal sealed class GenderMapper
+public sealed class GenderMapper
 {
     internal enum Codes
     {
@@ -10,11 +10,11 @@ internal sealed class GenderMapper
         Female = 'F'
     }
 
+    public Gender Map(char code)
+	    => new(GetGender(code));
+
     public char MapCode(Gender gender)
         => GetCode(gender);
-
-    public Gender MapGender(char code)
-        => new(GetGender(code));
 
     private static char GetCode(Gender gender)
     {

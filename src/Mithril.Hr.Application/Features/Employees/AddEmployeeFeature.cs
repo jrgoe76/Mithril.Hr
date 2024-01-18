@@ -7,7 +7,6 @@ namespace Mithril.Hr.Application.Features.Employees;
 
 public sealed class AddEmployeeFeature(
     IIdGenerator idGenerator,
-    IEmployeeCtr employeeCtr,
     IEmployeeRepository employeeRepository,
     EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
 {
@@ -15,14 +14,13 @@ public sealed class AddEmployeeFeature(
     {
         var employeeId = idGenerator.New();
 
-        var employee = employeeCtr
-            .New(employeeId,
-                new PersonName(addEmployeeInfo.FirstName, addEmployeeInfo.MiddleInitial, addEmployeeInfo.LastName),
-                new Gender(addEmployeeInfo.Gender),
-                new Email(addEmployeeInfo.EmailAddress),
-                new Address(addEmployeeInfo.AddressLine1, addEmployeeInfo.AddressLine2,
-                    addEmployeeInfo.City, addEmployeeInfo.State, addEmployeeInfo.Zipcode),
-                new AcademicDegree(addEmployeeInfo.Degree));
+        var employee = new Employee(employeeId,
+			new PersonName(addEmployeeInfo.FirstName, addEmployeeInfo.MiddleInitial, addEmployeeInfo.LastName),
+			new Gender(addEmployeeInfo.Gender),
+			new Email(addEmployeeInfo.EmailAddress),
+			new Address(addEmployeeInfo.AddressLine1, addEmployeeInfo.AddressLine2,
+			    addEmployeeInfo.City, addEmployeeInfo.State, addEmployeeInfo.Zipcode),
+			new AcademicDegree(addEmployeeInfo.Degree));
 
         await employeeRepository.Add(employee);
 

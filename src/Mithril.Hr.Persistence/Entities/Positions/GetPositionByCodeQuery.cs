@@ -5,9 +5,10 @@ using Mithril.Hr.Persistence.Data;
 namespace Mithril.Hr.Persistence.Entities.Positions;
 
 internal sealed class GetPositionByCodeQuery(
-    DataContext dbContext) : IGetPositionByCodeQuery
+    DataContext dbContext,
+    PositionMapper positionMapper) : IGetPositionByCodeQuery
 {
     public async Task<Position> Get(string positionCode)
-        => await dbContext.Positions
-            .SingleAsync(position => position.PositionCode == positionCode);
+	    => positionMapper.Map(await dbContext.Positions
+		    .SingleAsync(position => position.PositionCode == positionCode));
 }

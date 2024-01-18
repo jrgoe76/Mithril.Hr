@@ -1,14 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Mithril.Hr.Domain.Positions;
 
 namespace Mithril.Hr.Persistence.Entities.Positions;
 
 [ExcludeFromCodeCoverage]
-internal sealed class PositionConfiguration : IEntityTypeConfiguration<Position>
+internal sealed class PositionConfiguration : IEntityTypeConfiguration<PositionEntity>
 {
-    public void Configure(EntityTypeBuilder<Position> builder)
+    public void Configure(EntityTypeBuilder<PositionEntity> builder)
     {
         builder.ToTable("Positions")
             .HasKey(entity => entity.PositionCode);
