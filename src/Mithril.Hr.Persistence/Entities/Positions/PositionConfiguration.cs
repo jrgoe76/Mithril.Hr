@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Mithril.Hr.Domain.Positions;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Persistence.Entities.Positions;
 

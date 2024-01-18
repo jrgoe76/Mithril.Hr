@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mithril.Hr.Domain.Positions;
 using Mithril.Hr.Persistence.Entities.Employees;
 using Mithril.Hr.Persistence.Entities.Positions;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Persistence.Data;
 

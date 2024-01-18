@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Mithril.Hr.Persistence.Entities.Demographics;
 using Mithril.Hr.Persistence.Entities.Education;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Persistence.Entities.Employees;
 

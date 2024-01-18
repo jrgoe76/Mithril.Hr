@@ -1,7 +1,7 @@
-﻿using Mithril.Hr.Domain.Demographics;
+﻿using System.Diagnostics.CodeAnalysis;
+using Mithril.Hr.Domain.Demographics;
 using Mithril.Hr.Domain.Education;
 using Mithril.Hr.Domain.Employees;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Persistence.Entities.Employees;
 
