@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using Mithril.Hr.Domain;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Configuration;
 

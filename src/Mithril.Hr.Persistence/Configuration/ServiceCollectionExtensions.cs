@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.Common;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mithril.Hr.Application.Features.Employees;
@@ -10,7 +11,6 @@ using Mithril.Hr.Persistence.Entities.Education;
 using Mithril.Hr.Persistence.Entities.Employees;
 using Mithril.Hr.Persistence.Entities.Positions;
 using Mithril.Hr.Persistence.Seeds;
-using System.Data.Common;
 
 namespace Mithril.Hr.Persistence.Configuration;
 

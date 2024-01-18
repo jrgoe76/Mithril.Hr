@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mithril.Hr.Domain.Education;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Mithril.Hr.Persistence.Entities.Education;
 

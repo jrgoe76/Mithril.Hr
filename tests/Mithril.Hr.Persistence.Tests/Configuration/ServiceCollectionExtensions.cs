@@ -1,8 +1,8 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.Common;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Mithril.Hr.Persistence.Data;
-using System.Data.Common;
 
 namespace Mithril.Hr.Persistence.Tests.Configuration;
 
