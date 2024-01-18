@@ -64,9 +64,10 @@ public sealed class EmployeeTests
     [Fact]
     public void AssignsContract()
     {
-        var contract = new Contract(
+	    var liamHill = EmployeeSeed.LiamHill();
+	    var contract = new Contract(
             PositionSeed.ChiefFinancialOfficer,
-            EmployeeSeed.LiamHill.EmployeeId,
+            liamHill.EmployeeId,
             DateOnly.FromDateTime(DateTime.Today));
 
         var employee = new Employee(Guid.NewGuid(), _name, _gender, _email, _address, _degree);

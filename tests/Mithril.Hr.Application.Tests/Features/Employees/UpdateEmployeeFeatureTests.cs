@@ -28,9 +28,10 @@ public sealed class UpdateEmployeeFeatureTests
     [Fact]
     public async Task ReturnsEmployeeInfo()
     {
-        var dianaKing = EmployeeSeed.DianaKing;
+        var dianaKing = EmployeeSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
-        var updatedDianaKingInfo = _employeeToEmployeeInfoMapper.Map(EmployeeTestSeed.UpdatedDianaKing);
+        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
+        var updatedDianaKingInfo = _employeeToEmployeeInfoMapper.Map(updatedDianaKing);
 
         _getEmployeeByIdQueryMock.Setup(dianaKing);
 
@@ -41,9 +42,9 @@ public sealed class UpdateEmployeeFeatureTests
     [Fact]
     public async Task UpdatesEmployeeInRepository()
     {
-        var dianaKing = EmployeeSeed.DianaKing;
+        var dianaKing = EmployeeSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
-        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing;
+        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
 
         _getEmployeeByIdQueryMock.Setup(dianaKing);
 

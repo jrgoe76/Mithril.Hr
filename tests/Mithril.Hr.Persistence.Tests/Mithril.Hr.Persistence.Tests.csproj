@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mithril.Hr.Persistence\Mithril.Hr.Persistence.csproj" />
+    <ProjectReference Include="..\Mithril.Hr.Application.Tests\Mithril.Hr.Application.Tests.csproj" />
   </ItemGroup>
 
 </Project>
