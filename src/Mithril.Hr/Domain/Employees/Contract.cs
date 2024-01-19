@@ -5,13 +5,14 @@ namespace Mithril.Hr.Domain.Employees;
 public record Contract
 {
     public Position Position { get; init; }
-    public Guid SupervisorId { get; init; }
-    public DateOnly StartDate { get; init; }
+    public Guid? SupervisorId { get; init; }
+    public DateOnly StartedOn { get; init; }
+    public DateOnly? EndedOn { get; init; }
 
     public Contract(
         Position position,
-        Guid supervisorId, 
-        DateOnly startDate)
+        Guid? supervisorId, 
+        DateOnly startedOn)
     {
         const string errorMessage = $"The {nameof(Employee)} is invalid";
 
@@ -22,6 +23,14 @@ public record Contract
 
         Position = position ?? throw new ArgumentException(errorMessage, nameof(position));
         SupervisorId = supervisorId;
-        StartDate = startDate;
+        StartedOn = startedOn;
     }
+
+    public Contract(Position position,
+	    DateOnly startedOn) : this(position, null, startedOn)
+    {
+    }
+
+    public Contract GetEndedOn(DateOnly endedOn)
+	    => this with { EndedOn = endedOn };
 }

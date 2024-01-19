@@ -4,7 +4,6 @@ using Mithril.Hr.Domain.Education;
 using Mithril.Hr.Domain.Employees;
 using Mithril.Hr.Seeds.Demographics;
 using Mithril.Hr.Seeds.Employees;
-using Mithril.Hr.Seeds.Positions;
 using Xunit;
 
 namespace Mithril.Hr.Tests.Domain.Employees;
@@ -65,16 +64,13 @@ public sealed class EmployeeTests
     public void AssignsContract()
     {
 	    var liamHill = EmployeeSeed.LiamHill();
-	    var contract = new Contract(
-            PositionSeed.ChiefFinancialOfficer,
-            liamHill.EmployeeId,
-            DateOnly.FromDateTime(DateTime.Today));
+	    var dianaKingContract = ContractSeed.DianaKing(DateOnly.FromDateTime(DateTime.Today));
 
         var employee = new Employee(Guid.NewGuid(), _name, _gender, _email, _address, _degree);
 
-        employee.AssignContract(contract.Position, contract.SupervisorId, contract.StartDate);
+        employee.AssignContract(dianaKingContract.Position, liamHill.EmployeeId, dianaKingContract.StartedOn);
 
         employee.Contract
-            .Should().Be(contract);
+            .Should().Be(dianaKingContract);
     }
 }
