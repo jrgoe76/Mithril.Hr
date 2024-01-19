@@ -11,19 +11,9 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class UpdateEmployeeFeatureTests
 {
-    private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new();
+    private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new ();
     private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
-    private readonly EmployeeToEmployeeInfoMapper _employeeToEmployeeInfoMapper = new ();
-
-    private readonly UpdateEmployeeFeature _feature;
-
-    public UpdateEmployeeFeatureTests()
-    {
-        _feature = new UpdateEmployeeFeature(
-            _getEmployeeByIdQueryMock.Object,
-            _employeeRepositoryMock.Object,
-            _employeeToEmployeeInfoMapper);
-    }
+    private readonly EmployeeInfoMapper _employeeInfoMapper = new ();
 
     [Fact]
     public async Task ReturnsEmployeeInfo()
@@ -31,11 +21,11 @@ public sealed class UpdateEmployeeFeatureTests
         var dianaKing = EmployeeSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
         var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
-        var updatedDianaKingInfo = _employeeToEmployeeInfoMapper.Map(updatedDianaKing);
+        var updatedDianaKingInfo = _employeeInfoMapper.Map(updatedDianaKing);
 
         _getEmployeeByIdQueryMock.Setup(dianaKing);
 
-        (await _feature.Update(dianaKingUpdateInfo))
+        (await GetFeature().Update(dianaKingUpdateInfo))
             .Should().Be(updatedDianaKingInfo);
     }
 
@@ -48,9 +38,15 @@ public sealed class UpdateEmployeeFeatureTests
 
         _getEmployeeByIdQueryMock.Setup(dianaKing);
 
-        await _feature.Update(dianaKingUpdateInfo);
+        await GetFeature().Update(dianaKingUpdateInfo);
 
         _employeeRepositoryMock
             .Verify(repository => repository.Update(updatedDianaKing), Times.Once);
     }
+
+    private UpdateEmployeeFeature GetFeature()
+	    => new (
+		    _getEmployeeByIdQueryMock.Object,
+		    _employeeRepositoryMock.Object,
+		    _employeeInfoMapper);
 }

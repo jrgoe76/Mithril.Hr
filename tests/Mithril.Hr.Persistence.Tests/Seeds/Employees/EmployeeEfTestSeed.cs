@@ -6,7 +6,7 @@ using Mithril.Hr.Seeds.Employees;
 
 namespace Mithril.Hr.Persistence.Tests.Seeds.Employees;
 
-public static class EmployeeEntityTestSeed
+public static class EmployeeEfTestSeed
 {
     private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
     private static readonly Employee _dianaKing = EmployeeSeed.DianaKing();
@@ -14,7 +14,7 @@ public static class EmployeeEntityTestSeed
     private static readonly AcademicDegreeMapper _academicDegreeMapper = new ();
     private static readonly GenderMapper _genderMapper = new ();
 
-    public static EmployeeEntity LiamHill() => new ()
+    public static EmployeeEf LiamHill() => new ()
 	    {
 			EmployeeId = _liamHill.EmployeeId,
 			FirstName = _liamHill.Name.FirstName,
@@ -30,7 +30,7 @@ public static class EmployeeEntityTestSeed
 			Degree = _academicDegreeMapper.MapCode(_liamHill.Degree)
 	    };
 
-    public static EmployeeEntity DianaKing() => new ()
+    public static EmployeeEf DianaKing() => new ()
 	    {
 		    EmployeeId = _dianaKing.EmployeeId,
 		    FirstName = _dianaKing.Name.FirstName,

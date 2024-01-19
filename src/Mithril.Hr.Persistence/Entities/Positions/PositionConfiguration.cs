@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Mithril.Hr.Persistence.Entities.Positions;
 
 [ExcludeFromCodeCoverage]
-internal sealed class PositionConfiguration : IEntityTypeConfiguration<PositionEntity>
+internal sealed class PositionConfiguration : IEntityTypeConfiguration<PositionEf>
 {
-    public void Configure(EntityTypeBuilder<PositionEntity> builder)
+    public void Configure(EntityTypeBuilder<PositionEf> builder)
     {
         builder.ToTable("Positions")
             .HasKey(entity => entity.PositionCode);
@@ -19,5 +19,9 @@ internal sealed class PositionConfiguration : IEntityTypeConfiguration<PositionE
         builder.Property(entity => entity.Name)
             .IsRequired()
             .HasMaxLength(100);
+
+        builder.Property(entity => entity.Version)
+	        .IsRequired()
+	        .IsConcurrencyToken();
     }
 }

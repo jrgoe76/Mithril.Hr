@@ -4,6 +4,6 @@ namespace Mithril.Hr.Persistence.Entities.Positions;
 
 public sealed class PositionMapper
 {
-	public Position Map(PositionEntity positionEntity)
-		=> new (positionEntity.PositionCode, positionEntity.Name);
+	public Position Map(PositionEf positionEf)
+		=> new (positionEf.PositionCode, positionEf.Name);
 }

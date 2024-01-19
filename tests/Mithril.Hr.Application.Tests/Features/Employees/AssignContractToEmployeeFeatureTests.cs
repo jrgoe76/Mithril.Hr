@@ -13,38 +13,27 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class AssignContractToEmployeeFeatureTests
 {
-    private static readonly DateOnly Today = DateOnly.FromDateTime(DateTime.Today);
+    private static readonly DateOnly _today = DateOnly.FromDateTime(DateTime.Today);
 
     private readonly Position _position = PositionSeed.ChiefFinancialOfficer;
     private readonly Employee _dianaKing = EmployeeSeed.DianaKing();
-    private readonly Employee _dianaKingWithContract = EmployeeTestSeed.DianaKingWithContract(Today);
+    private readonly Employee _dianaKingWithContract = EmployeeTestSeed.DianaKingWithContract(_today);
 
     private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new ();
     private readonly Mock<IGetPositionByCodeQuery> _getPositionByCodeQueryMock = new ();
     private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
-    private readonly EmployeeToEmployeeInfoMapper _employeeToEmployeeInfoMapper = new ();
-
-    private readonly AssignContractToEmployeeFeature _feature;
-
-    public AssignContractToEmployeeFeatureTests()
-    {
-        _feature = new AssignContractToEmployeeFeature(
-            _getEmployeeByIdQueryMock.Object,
-            _getPositionByCodeQueryMock.Object,
-            _employeeRepositoryMock.Object,
-            _employeeToEmployeeInfoMapper);
-    }
+    private readonly EmployeeInfoMapper _employeeInfoMapper = new ();
 
     [Fact]
     public async Task ReturnsEmployeeInfo()
     {
-        var dianaKingInfoWithContract = _employeeToEmployeeInfoMapper
+        var dianaKingInfoWithContract = _employeeInfoMapper
             .Map(_dianaKingWithContract);
 
         _getEmployeeByIdQueryMock.Setup(_dianaKing);
         _getPositionByCodeQueryMock.Setup(_position);
 
-        (await _feature.Assign(AssignContractInfoSeed.DianaKing(Today)))
+        (await GetFeature().Assign(AssignContractInfoSeed.DianaKing(_today)))
             .Should().Be(dianaKingInfoWithContract);
     }
 
@@ -54,9 +43,16 @@ public sealed class AssignContractToEmployeeFeatureTests
         _getEmployeeByIdQueryMock.Setup(_dianaKing);
         _getPositionByCodeQueryMock.Setup(_position);
 
-        await _feature.Assign(AssignContractInfoSeed.DianaKing(Today));
+        await GetFeature().Assign(AssignContractInfoSeed.DianaKing(_today));
 
         _employeeRepositoryMock
             .Verify(repository => repository.Update(_dianaKingWithContract), Times.Once);
     }
+
+    private AssignContractToEmployeeFeature GetFeature()
+	    => new(
+		    _getEmployeeByIdQueryMock.Object,
+		    _getPositionByCodeQueryMock.Object,
+		    _employeeRepositoryMock.Object,
+		    _employeeInfoMapper);
 }

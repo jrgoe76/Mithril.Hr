@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Mithril.Hr.Persistence.Entities.Employees;
 
 [ExcludeFromCodeCoverage]
-internal sealed class EmployeeConfiguration : IEntityTypeConfiguration<EmployeeEntity>
+internal sealed class EmployeeConfiguration : IEntityTypeConfiguration<EmployeeEf>
 {
-    public void Configure(EntityTypeBuilder<EmployeeEntity> builder)
+    public void Configure(EntityTypeBuilder<EmployeeEf> builder)
     {
         builder.ToTable("Employees")
             .HasKey(entity => entity.EmployeeId);

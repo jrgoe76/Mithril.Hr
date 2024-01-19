@@ -7,7 +7,7 @@ public sealed class AssignContractToEmployeeFeature(
     IGetEmployeeByIdQuery getEmployeeByIdQuery,
     IGetPositionByCodeQuery getPositionByCodeQuery,
     IEmployeeRepository employeeRepository,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
+    EmployeeInfoMapper employeeInfoMapper)
 {
     public async Task<EmployeeInfo> Assign(AssignContractInfo assignContractInfo)
     {
@@ -18,6 +18,6 @@ public sealed class AssignContractToEmployeeFeature(
 
         await employeeRepository.Update(employee);
 
-        return employeeToEmployeeInfoMapper.Map(employee);
+        return employeeInfoMapper.Map(employee);
     }
 }

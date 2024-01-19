@@ -26,9 +26,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    var scope = app.Services.CreateScope();
-    var dbSeeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
-    await dbSeeder.Run();
+    await DbSeeder.Run(app.Services, app.Environment.EnvironmentName);
 
     app.UseSwagger();
     app.UseSwaggerUI();

@@ -6,27 +6,27 @@ namespace Mithril.Hr.Tests.Domain.Positions;
 
 public sealed class PositionTests
 {
-    private const string PositionCode = "COO";
-    private const string Name = "Chief Operating Officer";
+    private const string _positionCode = "COO";
+    private const string _name = "Chief Operating Officer";
 
     [Fact]
     public void ThrowsArgumentException()
     {
-        ((Func<Position>)(() => new Position(null!, Name)))
+        ((Func<Position>)(() => new Position(null!, _name)))
             .Should().Throw<ArgumentException>();
-        ((Func<Position>)(() => new Position(string.Empty, Name)))
+        ((Func<Position>)(() => new Position(string.Empty, _name)))
             .Should().Throw<ArgumentException>();
 
-        ((Func<Position>)(() => new Position(PositionCode, null!)))
+        ((Func<Position>)(() => new Position(_positionCode, null!)))
             .Should().Throw<ArgumentException>();
-        ((Func<Position>)(() => new Position(PositionCode, string.Empty)))
+        ((Func<Position>)(() => new Position(_positionCode, string.Empty)))
             .Should().Throw<ArgumentException>();
     }
 
     [Fact]
     public void ReturnsRepresentation()
     {
-        new Position(PositionCode, Name).ToString()
-            .Should().Be(Name);
+        new Position(_positionCode, _name).ToString()
+            .Should().Be(_name);
     }
 }

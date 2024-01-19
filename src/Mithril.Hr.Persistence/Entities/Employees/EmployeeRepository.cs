@@ -13,24 +13,22 @@ internal sealed class EmployeeRepository(
 {
     public async Task Add(Employee employee)
     {
-        var employeeEntity = new EmployeeEntity();
+        var employeeEf = new EmployeeEf();
 
-        employeeEntity.Update(employee, genderMapper, academicDegreeMapper);
-        employeeEntity.Version = Guid.NewGuid();
+        employeeEf.Update(employee, genderMapper, academicDegreeMapper, Guid.NewGuid());
 
-        await dbContext.Employees.AddAsync(employeeEntity);
+        await dbContext.Employees.AddAsync(employeeEf);
         await dbContext.SaveChangesAsync();
     }
 
     public async Task Update(Employee employee)
     {
-	    var employeeEntity = await dbContext.Employees
+	    var employeeEf = await dbContext.Employees
 		    .SingleAsync(entity => entity.EmployeeId == employee.EmployeeId);
 
-	    employeeEntity.Update(employee, genderMapper, academicDegreeMapper);
-	    employeeEntity.Version = Guid.NewGuid();
+	    employeeEf.Update(employee, genderMapper, academicDegreeMapper, Guid.NewGuid());
 
-        dbContext.Attach(employeeEntity);
+        dbContext.Attach(employeeEf);
         await dbContext.SaveChangesAsync();
     }
 }

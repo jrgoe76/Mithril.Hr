@@ -9,12 +9,12 @@ public sealed class EmployeeMapper(
 	GenderMapper genderMapper,
 	AcademicDegreeMapper academicDegreeMapper)
 {
-	public Employee Map(EmployeeEntity employee)
-		=> new (employee.EmployeeId,
-			new PersonName(employee.FirstName, employee.MiddleInitial, employee.LastName),
-			genderMapper.Map(employee.Gender),
-			new Email(employee.EmailAddress),
-			new Address(employee.AddressLine1, employee.AddressLine2, 
-				employee.City, employee.State, employee.Zipcode),
-			academicDegreeMapper.Map(employee.Degree));
+	public Employee Map(EmployeeEf employeeEf)
+		=> new (employeeEf.EmployeeId,
+			new PersonName(employeeEf.FirstName, employeeEf.MiddleInitial, employeeEf.LastName),
+			genderMapper.Map(employeeEf.Gender),
+			new Email(employeeEf.EmailAddress),
+			new Address(employeeEf.AddressLine1, employeeEf.AddressLine2, 
+				employeeEf.City, employeeEf.State, employeeEf.Zipcode),
+			academicDegreeMapper.Map(employeeEf.Degree));
 }

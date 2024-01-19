@@ -12,12 +12,12 @@ public sealed class GetAllEmployeesDetailQueryTests
     [Fact]
     public async Task ReturnsAllEmployeesDetail()
     {
-	    var liamHillEntity = EmployeeEntityTestSeed.LiamHill();
+	    var liamHillEf = EmployeeEfTestSeed.LiamHill();
 
 	    using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-        await dbContext.Employees.AddAsync(liamHillEntity);
+        await dbContext.Employees.AddAsync(liamHillEf);
         await dbContext.SaveChangesAsync();
 
         (await new GetAllEmployeesDetailQuery(dbContext).Get())

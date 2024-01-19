@@ -33,6 +33,7 @@ public static class ServiceCollectionExtensions
 	        .AddScoped<PositionConfiguration>()
 	        .AddSingleton<PositionMapper>()
 	        .AddScoped<IGetPositionByCodeQuery, GetPositionByCodeQuery>()
+	        .AddScoped<IPositionRepository, PositionRepository>()
 
             .AddScoped<EmployeeConfiguration>()
 	        .AddSingleton<EmployeeMapper>()

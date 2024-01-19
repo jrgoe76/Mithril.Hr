@@ -15,7 +15,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 public sealed class EmployeeRepositoryTests
 {
     private readonly Employee _liamHill = EmployeeSeed.LiamHill();
-    private readonly EmployeeEntity _liamHillEntity = EmployeeEntityTestSeed.LiamHill();
+    private readonly EmployeeEf _liamHillEf = EmployeeEfTestSeed.LiamHill();
 
     [Fact]
     public async Task AddsEmployeeIntoDbContext()
@@ -34,12 +34,12 @@ public sealed class EmployeeRepositoryTests
     [Fact]
     public async Task UpdatesEmployeeInDbContext()
     {
-        var latestVersion = _liamHillEntity.Version;
+        var latestVersion = _liamHillEf.Version;
 
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-        await dbContext.Employees.AddAsync(_liamHillEntity);
+        await dbContext.Employees.AddAsync(_liamHillEf);
         await dbContext.SaveChangesAsync();
         dbContext.ResetStates();
 

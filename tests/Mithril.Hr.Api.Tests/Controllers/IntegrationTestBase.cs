@@ -11,13 +11,10 @@ namespace Mithril.Hr.Api.Tests.Controllers;
 
 public abstract class IntegrationTestBase : WebApplicationFactory<Program>
 {
-    private readonly JsonSerializerOptions _jsonSerializerOptions = new();
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new ();
 
-    protected HttpClient Client
-        => Server.Services.GetRequiredService<HttpClient>();
-
-    protected DataContext DbContext
-        => Server.Services.GetRequiredService<DataContext>();
+    protected HttpClient Client => Server.Services.GetRequiredService<HttpClient>();
+    protected DataContext DbContext => Server.Services.GetRequiredService<DataContext>();
 
     protected IntegrationTestBase()
     {
