@@ -45,4 +45,33 @@ public static class EmployeeEfTestSeed
 		    Zipcode = _dianaKing.Address.Zipcode,
 		    Degree = _academicDegreeMapper.MapCode(_dianaKing.Degree)
 	    };
+
+
+    public static EmployeeEf DianaKingWithContract(DateOnly startedOn, DateOnly? endedOn = null)
+    {
+	    var contract = ContractSeed.DianaKing(startedOn);
+
+	    return new EmployeeEf
+	    {
+		    EmployeeId = _dianaKing.EmployeeId,
+		    FirstName = _dianaKing.Name.FirstName,
+		    MiddleInitial = _dianaKing.Name.MiddleInitial,
+		    LastName = _dianaKing.Name.LastName,
+		    Gender = _genderMapper.MapCode(_dianaKing.Gender),
+		    EmailAddress = _dianaKing.Email.Address,
+		    AddressLine1 = _dianaKing.Address.AddressLine1,
+		    AddressLine2 = _dianaKing.Address.AddressLine2,
+		    City = _dianaKing.Address.City,
+		    State = _dianaKing.Address.State,
+		    Zipcode = _dianaKing.Address.Zipcode,
+		    Degree = _academicDegreeMapper.MapCode(_dianaKing.Degree),
+		    Contract = new ContractEf
+		    {
+			    PositionCode = contract.Position.PositionCode,
+				SupervisorId = contract.SupervisorId,
+				StartedOn = contract.StartedOn,
+				EndedOn = endedOn
+		    }
+	    };
+    }
 }

@@ -50,7 +50,7 @@ public sealed class AssignContractToEmployeeFeatureTests
     }
 
     private AssignContractToEmployeeFeature GetFeature()
-	    => new(
+	    => new (
 		    _getEmployeeByIdQueryMock.Object,
 		    _getPositionByCodeQueryMock.Object,
 		    _employeeRepositoryMock.Object,

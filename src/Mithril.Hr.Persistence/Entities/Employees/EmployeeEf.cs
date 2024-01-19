@@ -21,7 +21,7 @@ public record EmployeeEf
 
     public Guid Version { get; set; }
 
-    public ContractEf Contract { get; set; } = null!;
+    public ContractEf? Contract { get; set; }
 
     public EmployeeEf Update(
 	    Employee employee,
@@ -42,6 +42,17 @@ public record EmployeeEf
 	    Zipcode = employee.Address.Zipcode;
 	    Degree = academicDegreeMapper.MapCode(employee.Degree);
         Version = version;
+
+        var contract = employee.Contract != null
+            ? new ContractEf
+            {
+	            PositionCode = employee.Contract.Position.PositionCode,
+	            SupervisorId = employee.Contract.SupervisorId,
+	            StartedOn = employee.Contract.StartedOn,
+                EndedOn = employee.Contract.EndedOn
+            }
+            : null;
+        Contract = contract;
 
 	    return this;
     }

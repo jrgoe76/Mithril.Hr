@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Employees;
 using Mithril.Hr.Application.Tests.Seeds.Employees;
-using Mithril.Hr.Seeds.Employees;
+using Mithril.Hr.Tests.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Application.Tests.Features.Employees;
@@ -9,12 +9,14 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 public sealed class EmployeeInfoMapperTests
 {
     [Fact]
-    public void MapsEmployeeToEmployeeInfo()
+    public void MapsEmployeeInfo()
     {
-        var liamHill = EmployeeSeed.LiamHill();
-        var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
+        var today = DateOnly.FromDateTime(DateTime.Today);
 
-        new EmployeeInfoMapper().Map(liamHill)
-            .Should().Be(liamHillInfo);
+        var dianaKing = EmployeeTestSeed.DianaKingWithContract(today);
+        var dianaKingInfo = EmployeeInfoTestSeed.DianaKingWithContract(today);
+
+        new EmployeeInfoMapper().Map(dianaKing)
+            .Should().Be(dianaKingInfo);
     }
 }
