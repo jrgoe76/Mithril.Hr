@@ -7,7 +7,7 @@ namespace Mithril.Hr.Application.Features.Employees;
 public sealed class UpdateEmployeeFeature(
     IGetEmployeeByIdQuery getEmployeeByIdQuery,
     IEmployeeRepository employeeRepository,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
+    EmployeeInfoMapper employeeInfoMapper)
 {
     public async Task<EmployeeInfo> Update(UpdateEmployeeInfo updateEmployeeInfo)
     {
@@ -24,6 +24,6 @@ public sealed class UpdateEmployeeFeature(
 
         await employeeRepository.Update(employee);
 
-        return employeeToEmployeeInfoMapper.Map(employee);
+        return employeeInfoMapper.Map(employee);
     }
 }

@@ -11,7 +11,7 @@ public sealed class PositionMapperTests
 	[Fact]
 	public void MapsPosition()
 	{
-		new PositionMapper().Map(PositionEntityTestSeed.ChiefExecutiveOfficer())
+		new PositionMapper().Map(PositionEfTestSeed.ChiefExecutiveOfficer())
 			.Should().Be(PositionSeed.ChiefExecutiveOfficer);
 	}
 }

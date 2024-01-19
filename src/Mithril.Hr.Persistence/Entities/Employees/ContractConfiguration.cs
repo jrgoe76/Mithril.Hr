@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Mithril.Hr.Persistence.Entities.Employees;
 
 [ExcludeFromCodeCoverage]
-internal sealed class ContractConfiguration : IEntityTypeConfiguration<ContractEntity>
+internal sealed class ContractConfiguration : IEntityTypeConfiguration<ContractEf>
 {
-    public void Configure(EntityTypeBuilder<ContractEntity> builder)
+    public void Configure(EntityTypeBuilder<ContractEf> builder)
     {
         builder.ToTable("Contracts")
             .HasKey(entity => entity.EmployeeId);
@@ -16,6 +16,6 @@ internal sealed class ContractConfiguration : IEntityTypeConfiguration<ContractE
             .ValueGeneratedNever();
         builder.HasOne(entity => entity.Employee)
             .WithOne(entity => entity.Contract)
-            .HasForeignKey<ContractEntity>(entity => entity.EmployeeId);
+            .HasForeignKey<ContractEf>(entity => entity.EmployeeId);
     }
 }

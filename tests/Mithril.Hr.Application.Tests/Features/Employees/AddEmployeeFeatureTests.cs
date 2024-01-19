@@ -15,27 +15,17 @@ public sealed class AddEmployeeFeatureTests
     private readonly AddEmployeeInfo _paulaCarrAddInfo = AddEmployeeInfoSeed.PaulaCarr;
 
     private readonly Mock<IIdGenerator> _idGeneratorMock = new ();
-    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new();
-    private readonly EmployeeToEmployeeInfoMapper _employeeToEmployeeInfoMapper = new ();
-
-    private readonly AddEmployeeFeature _feature;
-
-    public AddEmployeeFeatureTests()
-    {
-        _feature = new AddEmployeeFeature(
-            _idGeneratorMock.Object,
-            _employeeRepositoryMock.Object,
-            _employeeToEmployeeInfoMapper);
-    }
+    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
+    private readonly EmployeeInfoMapper _employeeInfoMapper = new ();
 
     [Fact]
     public async Task ReturnsEmployeeInfo()
     {
-        var paulaCarrInfo = _employeeToEmployeeInfoMapper.Map(_paulaCarr);
+        var paulaCarrInfo = _employeeInfoMapper.Map(_paulaCarr);
 
         _idGeneratorMock.Setup(_paulaCarr.EmployeeId);
 
-        (await _feature.Add(_paulaCarrAddInfo))
+        (await GetFeature().Add(_paulaCarrAddInfo))
             .Should().Be(paulaCarrInfo);
     }
 
@@ -44,9 +34,16 @@ public sealed class AddEmployeeFeatureTests
     {
         _idGeneratorMock.Setup(_paulaCarr.EmployeeId);
 
-        await _feature.Add(_paulaCarrAddInfo);
+        await GetFeature().Add(_paulaCarrAddInfo);
 
         _employeeRepositoryMock
             .Verify(repository => repository.Add(_paulaCarr), Times.Once);
     }
+
+    private AddEmployeeFeature GetFeature()
+	    => new(
+		    _idGeneratorMock.Object,
+		    _employeeRepositoryMock.Object,
+		    _employeeInfoMapper);
+
 }

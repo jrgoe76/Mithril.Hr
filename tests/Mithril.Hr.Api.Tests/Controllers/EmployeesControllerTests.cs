@@ -12,7 +12,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task GetsAllEmployees()
     {
-        var liamHill = EmployeeEntityTestSeed.LiamHill();
+        var liamHill = EmployeeEfTestSeed.LiamHill();
         var liamHillDetail = EmployeeDetailTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
@@ -30,7 +30,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task GetsEmployeeById()
     {
-        var liamHill = EmployeeEntityTestSeed.LiamHill();
+        var liamHill = EmployeeEfTestSeed.LiamHill();
         var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
@@ -64,10 +64,10 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task UpdatesEmployee()
     {
-	    var dianaKingEntity = EmployeeEntityTestSeed.DianaKing();
+	    var dianaKingEf = EmployeeEfTestSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
 
-        await DbContext.Employees.AddAsync(dianaKingEntity);
+        await DbContext.Employees.AddAsync(dianaKingEf);
         await DbContext.SaveChangesAsync();
 
         var response = await Client.PutAsync("/employees", GetContent(dianaKingUpdateInfo));

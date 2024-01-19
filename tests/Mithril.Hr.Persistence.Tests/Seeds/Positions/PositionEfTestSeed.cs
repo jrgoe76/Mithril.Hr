@@ -3,9 +3,9 @@ using Mithril.Hr.Seeds.Positions;
 
 namespace Mithril.Hr.Persistence.Tests.Seeds.Positions;
 
-public static class PositionEntityTestSeed
+public static class PositionEfTestSeed
 {
-	public static PositionEntity ChiefExecutiveOfficer() => new()
+	public static PositionEf ChiefExecutiveOfficer() => new()
 		{
 			PositionCode = PositionSeed.ChiefExecutiveOfficer.PositionCode,
 			Name = PositionSeed.ChiefExecutiveOfficer.Name

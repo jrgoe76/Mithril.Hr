@@ -8,18 +8,26 @@ using Xunit;
 
 namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 
-public sealed class EmployeeMapperTests
+public sealed class EmployeeEfTests
 {
     [Fact]
-	public void MapsEmployee()
+	public void UpdatesEmployee()
 	{
 		var liamHill = EmployeeSeed.LiamHill();
 		var liamHillEf = EmployeeEfTestSeed.LiamHill();
 
-        new EmployeeMapper(
+		var latestVersion = liamHillEf.Version;
+	    var version = Guid.NewGuid();
+	    liamHillEf.Version = version;
+		
+        new EmployeeEf { EmployeeId = liamHill.EmployeeId }
+			.Update(
+				liamHill,
 				new GenderMapper(),
-				new AcademicDegreeMapper())
-			.Map(liamHillEf)
-			.Should().Be(liamHill);
+				new AcademicDegreeMapper(),
+				version)
+			.Should().Be(liamHillEf);
+        latestVersion
+	        .Should().NotBe(version);
 	}
 }

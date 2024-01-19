@@ -8,7 +8,7 @@ namespace Mithril.Hr.Application.Features.Employees;
 public sealed class AddEmployeeFeature(
     IIdGenerator idGenerator,
     IEmployeeRepository employeeRepository,
-    EmployeeToEmployeeInfoMapper employeeToEmployeeInfoMapper)
+    EmployeeInfoMapper employeeInfoMapper)
 {
     public async Task<EmployeeInfo> Add(AddEmployeeInfo addEmployeeInfo)
     {
@@ -24,6 +24,6 @@ public sealed class AddEmployeeFeature(
 
         await employeeRepository.Add(employee);
 
-        return employeeToEmployeeInfoMapper.Map(employee);
+        return employeeInfoMapper.Map(employee);
     }
 }

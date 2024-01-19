@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Mithril.Hr.Application.Tests.Features.Employees;
 
-public sealed class EmployeeToEmployeeInfoMapperTests
+public sealed class EmployeeInfoMapperTests
 {
     [Fact]
     public void MapsEmployeeToEmployeeInfo()
@@ -14,7 +14,7 @@ public sealed class EmployeeToEmployeeInfoMapperTests
         var liamHill = EmployeeSeed.LiamHill();
         var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
 
-        new EmployeeToEmployeeInfoMapper().Map(liamHill)
+        new EmployeeInfoMapper().Map(liamHill)
             .Should().Be(liamHillInfo);
     }
 }

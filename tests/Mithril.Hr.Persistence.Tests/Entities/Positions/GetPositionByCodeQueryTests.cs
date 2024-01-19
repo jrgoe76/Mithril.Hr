@@ -15,7 +15,7 @@ public sealed class GetPositionByCodeQueryTests
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-        await dbContext.Positions.AddAsync(PositionEntityTestSeed.ChiefExecutiveOfficer());
+        await dbContext.Positions.AddAsync(PositionEfTestSeed.ChiefExecutiveOfficer());
         await dbContext.SaveChangesAsync();
 
         (await new GetPositionByCodeQuery(

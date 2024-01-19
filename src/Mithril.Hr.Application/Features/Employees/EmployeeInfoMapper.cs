@@ -2,7 +2,7 @@
 
 namespace Mithril.Hr.Application.Features.Employees;
 
-public sealed class EmployeeToEmployeeInfoMapper
+public sealed class EmployeeInfoMapper
 {
     public EmployeeInfo Map(Employee employee)
         => new (

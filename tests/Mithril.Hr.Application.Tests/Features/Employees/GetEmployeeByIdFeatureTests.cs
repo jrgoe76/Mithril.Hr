@@ -13,16 +13,16 @@ public sealed class GetEmployeeByIdFeatureTests
     public async Task ReturnsEmployeeInfo()
     {
         var getEmployeeByIdQueryMock = new Mock<IGetEmployeeByIdQuery>();
-        var employeeToEmployeeInfoMapper = new EmployeeToEmployeeInfoMapper();
+        var employeeInfoMapper = new EmployeeInfoMapper();
 
         var liamHill = EmployeeSeed.LiamHill();
-        var liamHillInfo = employeeToEmployeeInfoMapper.Map(liamHill);
+        var liamHillInfo = employeeInfoMapper.Map(liamHill);
 
         getEmployeeByIdQueryMock.Setup(liamHill);
         
         (await new GetEmployeeByIdFeature(
                 getEmployeeByIdQueryMock.Object, 
-                employeeToEmployeeInfoMapper)
+                employeeInfoMapper)
             .Get(liamHill.EmployeeId))
             .Should().Be(liamHillInfo);
     }

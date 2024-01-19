@@ -4,7 +4,7 @@ using Mithril.Hr.Persistence.Entities.Education;
 
 namespace Mithril.Hr.Persistence.Entities.Employees;
 
-public record EmployeeEntity
+public record EmployeeEf
 {
     public Guid EmployeeId { get; set; }
     public string FirstName { get; set; } = null!;
@@ -13,7 +13,7 @@ public record EmployeeEntity
     public char Gender { get; set; }
     public string EmailAddress { get; set; } = null!;
     public string AddressLine1 { get; set; } = null!;
-    public string? AddressLine2 { get; set; } = null!;
+    public string? AddressLine2 { get; set; }
     public string City { get; set; } = null!;
     public string State { get; set; } = null!;
     public string Zipcode { get; set; } = null!;
@@ -21,13 +21,15 @@ public record EmployeeEntity
 
     public Guid Version { get; set; }
 
-    public ContractEntity Contract { get; set; } = null!;
+    public ContractEf Contract { get; set; } = null!;
 
-    public EmployeeEntity Update(
+    public EmployeeEf Update(
 	    Employee employee,
 	    GenderMapper genderMapper,
-	    AcademicDegreeMapper academicDegreeMapper)
+	    AcademicDegreeMapper academicDegreeMapper,
+	    Guid version)
     {
+	    EmployeeId = employee.EmployeeId;
 	    FirstName = employee.Name.FirstName;
 	    MiddleInitial = employee.Name.MiddleInitial;
 	    LastName = employee.Name.LastName;
@@ -39,6 +41,7 @@ public record EmployeeEntity
 	    State = employee.Address.State;
 	    Zipcode = employee.Address.Zipcode;
 	    Degree = academicDegreeMapper.MapCode(employee.Degree);
+        Version = version;
 
 	    return this;
     }

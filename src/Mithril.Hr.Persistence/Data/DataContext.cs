@@ -9,8 +9,8 @@ namespace Mithril.Hr.Persistence.Data;
 public class DataContext(
     DbContextOptions<DataContext> options) : DbContext(options)
 {
-    public DbSet<PositionEntity> Positions { get; set; } = null!;
-    public DbSet<EmployeeEntity> Employees { get; set; } = null!;
+    public DbSet<PositionEf> Positions { get; set; } = null!;
+    public DbSet<EmployeeEf> Employees { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
