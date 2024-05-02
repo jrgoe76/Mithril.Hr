@@ -11,42 +11,45 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 
 public sealed class UpdateEmployeeFeatureTests
 {
+    private readonly Employee _dianaKing = EmployeeSeed.DianaKing();
+    private readonly UpdateEmployeeInfo _dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
+    private readonly Employee _updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
+
     private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new ();
     private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
     private readonly EmployeeInfoMapper _employeeInfoMapper = new ();
 
     [Fact]
-    public async Task ReturnsEmployeeInfo()
+    public async Task Returns_EmployeeInfo()
     {
-        var dianaKing = EmployeeSeed.DianaKing();
-        var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
-        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
-        var updatedDianaKingInfo = _employeeInfoMapper.Map(updatedDianaKing);
+        var updatedDianaKingInfo = _employeeInfoMapper.Map(_updatedDianaKing);
 
-        _getEmployeeByIdQueryMock.Setup(dianaKing);
+        ArrangeGetEmployeeById(_dianaKing);
 
-        (await GetFeature().Update(dianaKingUpdateInfo))
+        (await GetFeature().Update(_dianaKingUpdateInfo))
             .Should().Be(updatedDianaKingInfo);
     }
 
     [Fact]
-    public async Task UpdatesEmployeeInRepository()
+    public async Task Updates_an_Employee()
     {
-        var dianaKing = EmployeeSeed.DianaKing();
-        var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
-        var updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
+        ArrangeGetEmployeeById(_dianaKing);
 
-        _getEmployeeByIdQueryMock.Setup(dianaKing);
+        await GetFeature().Update(_dianaKingUpdateInfo);
 
-        await GetFeature().Update(dianaKingUpdateInfo);
-
-        _employeeRepositoryMock
-            .Verify(repository => repository.Update(updatedDianaKing), Times.Once);
+        VerifyRepositoryWasCalled(_updatedDianaKing);
     }
+
+    private void ArrangeGetEmployeeById(Employee employee)
+        => _getEmployeeByIdQueryMock.ArrangeGetEmployeeById(employee);
 
     private UpdateEmployeeFeature GetFeature()
 	    => new (
 		    _getEmployeeByIdQueryMock.Object,
 		    _employeeRepositoryMock.Object,
 		    _employeeInfoMapper);
+
+    private void VerifyRepositoryWasCalled(Employee employee)
+        => _employeeRepositoryMock
+            .Verify(repository => repository.Update(employee), Times.Once);
 }

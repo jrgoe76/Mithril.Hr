@@ -9,16 +9,21 @@ namespace Mithril.Hr.Tests.Domain.Employees;
 public sealed class ContractTests
 {
     [Fact]
-    public void ThrowsArgumentException()
+    public void Throws_an_error_caused_by_a_null_Position()
     {
         ((Func<Contract>)(() => new Contract(null!, Guid.NewGuid(), DateOnly.MaxValue)))
             .Should().Throw<ArgumentException>();
+    }
+
+    [Fact]
+    public void Throws_an_error_caused_by_an_empty_SupervisorId()
+    {
         ((Func<Contract>)(() => new Contract(PositionSeed.Accountant, Guid.Empty, DateOnly.MaxValue)))
             .Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void ReturnsEndedOnContract()
+    public void Creates_a_new_Contract_from_this_with_EndedOn()
     {
 		var today = DateOnly.FromDateTime(DateTime.Today);
 		var tomorrow = today.AddDays(1);

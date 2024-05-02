@@ -15,5 +15,6 @@ public static class ServiceCollectionExtensions
             .AddScoped<GetAllEmployeesDetailFeature>()
             .AddScoped<GetEmployeeByIdFeature>()
             .AddScoped<AddEmployeeFeature>()
-            .AddScoped<UpdateEmployeeFeature>();
+            .AddScoped<UpdateEmployeeFeature>()
+	        .AddScoped<AssignContractToEmployeeFeature>();
 }

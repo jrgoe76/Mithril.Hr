@@ -18,21 +18,19 @@ public sealed class EmployeeRepositoryTests
     private readonly EmployeeEf _liamHillEf = EmployeeEfTestSeed.LiamHill();
 
     [Fact]
-    public async Task AddsEmployeeIntoDbContext()
+    public async Task Adds_an_Employee_into_the_DbContext()
     {
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
         await GetRepository(dbContext).Add(_liamHill);
 
-        (await dbContext.Employees.FirstAsync()).Version
-            .Should().NotBeEmpty();
-        dbContext.ChangesAreSaved
-            .Should().BeTrue();
+        await AssertEmployeeVersionIsNotEmpty(dbContext);
+        VerifyChangesWereSaved(dbContext);
     }
 
     [Fact]
-    public async Task UpdatesEmployeeInDbContext()
+    public async Task Updates_an_Employee_in_DbContext()
     {
         var latestVersion = _liamHillEf.Version;
 
@@ -45,10 +43,8 @@ public sealed class EmployeeRepositoryTests
 
         await GetRepository(dbContext).Update(_liamHill);
 
-        (await dbContext.Employees.FirstAsync()).Version
-            .Should().NotBe(latestVersion);
-        dbContext.ChangesAreSaved
-            .Should().BeTrue();
+        await AssertEmployeeVersionChanged(dbContext, latestVersion);
+        VerifyChangesWereSaved(dbContext);
     }
 
     private static EmployeeRepository GetRepository(DataContext dbContext)
@@ -56,4 +52,16 @@ public sealed class EmployeeRepositoryTests
             dbContext,
             new GenderMapper(),
             new AcademicDegreeMapper());
+
+    private static async Task AssertEmployeeVersionIsNotEmpty(DataContext dbContext)
+        => (await dbContext.Employees.FirstAsync()).Version
+            .Should().NotBeEmpty();
+
+    private static async Task AssertEmployeeVersionChanged(DataContext dbContext, Guid latestVersion)
+        => (await dbContext.Employees.FirstAsync()).Version
+            .Should().NotBe(latestVersion);
+
+    private static void VerifyChangesWereSaved(DataContextSpy dbContext)
+        => dbContext.ChangesAreSaved
+            .Should().BeTrue();
 }

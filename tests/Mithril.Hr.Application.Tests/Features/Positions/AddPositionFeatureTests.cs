@@ -16,21 +16,24 @@ public sealed class AddPositionFeatureTests
     private readonly Mock<IPositionRepository> _positionRepositoryMock = new ();
 
     [Fact]
-    public async Task ReturnsPositionInfo()
+    public async Task Returns_a_PositionInfo()
     {
         (await GetFeature().Add(_ceoInfo))
             .Should().Be(_ceoInfo);
     }
 
     [Fact]
-    public async Task AddsPositionToRepository()
+    public async Task Adds_a_Position()
     {
         await GetFeature().Add(_ceoInfo);
 
-        _positionRepositoryMock
-            .Verify(repository => repository.Add(_ceo), Times.Once);
+        VerifyRepositoryWasCalled();
     }
 
     private AddPositionFeature GetFeature()
-        => new(_positionRepositoryMock.Object);
+        => new (_positionRepositoryMock.Object);
+
+    private void VerifyRepositoryWasCalled()
+        => _positionRepositoryMock
+            .Verify(repository => repository.Add(_ceo), Times.Once);
 }

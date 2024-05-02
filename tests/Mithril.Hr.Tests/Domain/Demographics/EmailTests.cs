@@ -6,24 +6,23 @@ namespace Mithril.Hr.Tests.Domain.Demographics;
 
 public sealed class EmailTests
 {
-    [Fact]
-    public void ThrowsArgumentException()
+    [Theory]
+    [InlineData("x")]
+    [InlineData("x@")]
+    [InlineData("x@x")]
+    [InlineData("x@x.x")]
+    public void Throws_error_caused_by_an_invalid_Address(string address)
     {
-        ((Func<Email>)(() => new Email("x")))
-            .Should().Throw<ArgumentException>();
-        ((Func<Email>)(() => new Email("x@")))
-            .Should().Throw<ArgumentException>();
-        ((Func<Email>)(() => new Email("x@x")))
-            .Should().Throw<ArgumentException>();
-        ((Func<Email>)(() => new Email("x@x.x")))
+        ((Func<Email>)(() => new Email(address)))
             .Should().Throw<ArgumentException>();
     }
 
-    [Fact]
-    public void ReturnsRepresentation()
+    [Theory]
+    [InlineData("liamhill@gmail.com")]
+    [InlineData("paulacarr@gmail.com")]
+    [InlineData("dianaking@aol.com")]
+    public void Returns_the_representation(string emailAddress)
     {
-        const string emailAddress = "joedoe@gmail.com";
-
         new Email(emailAddress).ToString()
             .Should().Be(emailAddress);
     }

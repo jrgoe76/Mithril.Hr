@@ -32,5 +32,8 @@ public record Contract
     }
 
     public Contract GetEndedOn(DateOnly endedOn)
-	    => this with { EndedOn = endedOn };
+	    => new (Position, SupervisorId, StartedOn)
+        {
+            EndedOn = endedOn
+        };
 }

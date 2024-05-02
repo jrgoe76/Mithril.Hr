@@ -10,18 +10,20 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Positions;
 public sealed class GetPositionByCodeQueryTests
 {
     [Fact]
-    public async Task ReturnsPosition()
+    public async Task Returns_a_Position_by_its_Code()
     {
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-        await dbContext.Positions.AddAsync(PositionEfTestSeed.ChiefExecutiveOfficer());
+        await dbContext.Positions.AddRangeAsync(
+            PositionEfTestSeed.ChiefExecutiveOfficer(),
+            PositionEfTestSeed.ChiefOperatingOfficer());
         await dbContext.SaveChangesAsync();
 
         (await new GetPositionByCodeQuery(
-			        dbContext,
-			        new PositionMapper())
-		        .Get(PositionSeed.ChiefExecutiveOfficer.PositionCode))
+			    dbContext,
+			    new PositionMapper())
+            .Get(PositionSeed.ChiefExecutiveOfficer.PositionCode))
             .Should().Be(PositionSeed.ChiefExecutiveOfficer);
     }
 }

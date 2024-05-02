@@ -10,7 +10,7 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 public sealed class GetEmployeeByIdFeatureTests
 {
     [Fact]
-    public async Task ReturnsEmployeeInfo()
+    public async Task Returns_EmployeeInfo()
     {
         var getEmployeeByIdQueryMock = new Mock<IGetEmployeeByIdQuery>();
         var employeeInfoMapper = new EmployeeInfoMapper();
@@ -18,7 +18,8 @@ public sealed class GetEmployeeByIdFeatureTests
         var liamHill = EmployeeSeed.LiamHill();
         var liamHillInfo = employeeInfoMapper.Map(liamHill);
 
-        getEmployeeByIdQueryMock.Setup(liamHill);
+        getEmployeeByIdQueryMock
+            .ArrangeGetEmployeeById(liamHill);
         
         (await new GetEmployeeByIdFeature(
                 getEmployeeByIdQueryMock.Object, 

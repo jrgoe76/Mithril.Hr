@@ -7,21 +7,21 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Demographics;
 
 public sealed class GenderMapperTests
 {
-	[Fact]
-	public void MapsGender()
+	[Theory]
+    [InlineData((char)GenderMapper.Codes.Male, Gender.Values.Male)]
+	[InlineData((char)GenderMapper.Codes.Female, Gender.Values.Female)]
+    internal void Maps_a_Code_into_its_Gender(char code, Gender.Values gender)
 	{
-		new GenderMapper().Map((char)GenderMapper.Codes.Male)
-			.Should().Be(Gender.Male);
-		new GenderMapper().Map((char)GenderMapper.Codes.Female)
-			.Should().Be(Gender.Female);
+		new GenderMapper().Map(code).Value
+			.Should().Be(gender);
 	}
 
-    [Fact]
-    public void MapsCode()
+	[Theory]
+	[InlineData(nameof(Gender.Values.Male), (char)GenderMapper.Codes.Male)]
+	[InlineData(nameof(Gender.Values.Female), (char)GenderMapper.Codes.Female)]
+    public void Maps_a_Gender_into_its_Code(string gender, char code)
     {
-        new GenderMapper().MapCode(Gender.Male)
-            .Should().Be((char)GenderMapper.Codes.Male);
-        new GenderMapper().MapCode(Gender.Female)
-            .Should().Be((char)GenderMapper.Codes.Female);
+        new GenderMapper().MapCode(new Gender(gender))
+            .Should().Be(code);
     }
 }

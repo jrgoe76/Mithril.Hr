@@ -12,16 +12,16 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 public sealed class GetEmployeeByIdQueryTests
 {
     [Fact]
-    public async Task ReturnsEmployee()
+    public async Task Returns_an_Employee_by_its_Id()
     {
 	    var liamHill = EmployeeSeed.LiamHill();
 	    var liamHillEf = EmployeeEfTestSeed.LiamHill();
+        var dianaKingEf = EmployeeEfTestSeed.DianaKing();
 
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
-
-        await dbContext.Employees.AddAsync(liamHillEf);
+        await dbContext.Employees.AddRangeAsync(liamHillEf, dianaKingEf);
         await dbContext.SaveChangesAsync();
 
         (await new GetEmployeeByIdQuery(

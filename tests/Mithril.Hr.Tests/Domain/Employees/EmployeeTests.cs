@@ -17,7 +17,7 @@ public sealed class EmployeeTests
     private readonly AcademicDegree _degree = AcademicDegree.PhD;
 
     [Fact]
-    public void ThrowsArgumentException()
+    public void Throws_an_error_caused_by_an_invalid_Employee()
     {
         ((Func<Employee>)(() => new Employee(Guid.Empty, _name, _gender, _email, _address, _degree)))
             .Should().Throw<ArgumentException>();
@@ -34,7 +34,7 @@ public sealed class EmployeeTests
     }
 
     [Fact]
-    public void UpdatesEmployee()
+    public void Updates_an_Employee()
     {
         var employee = new Employee(Guid.NewGuid(), _name, _gender, _email, _address, _degree);
 
@@ -61,7 +61,7 @@ public sealed class EmployeeTests
     }
 
     [Fact]
-    public void AssignsContract()
+    public void Assigns_a_Contract_to_an_Employee()
     {
 	    var liamHill = EmployeeSeed.LiamHill();
 	    var dianaKingContract = ContractSeed.DianaKing(DateOnly.FromDateTime(DateTime.Today));

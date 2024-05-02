@@ -6,10 +6,10 @@ public sealed class AcademicDegreeMapper
 {
     internal static class Codes
     {
-        public static string Associate = "AS";
-        public static string Bachelor = "BC";
-        public static string Master = "MS";
-        public static string PhD = "PD";
+        public const string Associate = "AS";
+        public const string Bachelor = "BC";
+        public const string Master = "MS";
+        public const string PhD = "PD";
     }
 
     private readonly IDictionary<string, AcademicDegree.Values> _codeToValueDictionary

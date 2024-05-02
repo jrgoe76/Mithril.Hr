@@ -6,19 +6,20 @@ namespace Mithril.Hr.Tests.Domain.Demographics;
 
 public sealed class GenderTests
 {
-    [Fact]
-    public void ThrowsArgumentException()
+	[Theory]
+	[InlineData("XXX")]
+    public void Throws_an_error_caused_by_an_invalid_Gender(string gender)
     {
-        ((Func<Gender>)(() => new Gender("XXX")))
+        ((Func<Gender>)(() => new Gender(gender)))
             .Should().Throw<ArgumentException>();
     }
 
-    [Fact]
-    public void ReturnsRepresentation()
+    [Theory]
+    [InlineData(nameof(Gender.Values.Male))]
+    [InlineData(nameof(Gender.Values.Female))]
+    public void Returns_the_representation(string gender)
     {
-        new Gender(nameof(Gender.Values.Male)).ToString()
-            .Should().Be(nameof(Gender.Values.Male));
-        new Gender(nameof(Gender.Values.Female)).ToString()
-            .Should().Be(nameof(Gender.Values.Female));
+        new Gender(gender).ToString()
+            .Should().Be(gender);
     }
 }

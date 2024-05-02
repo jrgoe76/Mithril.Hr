@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).Persistence" />
+    <InternalsVisibleTo Include="$(AssemblyName).Persistence.Tests" />
     <InternalsVisibleTo Include="$(AssemblyName).Tests" />
   </ItemGroup>
 

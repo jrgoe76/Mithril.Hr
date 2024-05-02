@@ -12,7 +12,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 public sealed class EmployeeEfTests
 {
 	[Fact]
-	public void UpdatesEmployee()
+	public void Updates_an_Employee()
 	{
 		var liamHill = EmployeeSeed.LiamHill();
 		var liamHillEf = EmployeeEfTestSeed.LiamHill();
@@ -33,7 +33,7 @@ public sealed class EmployeeEfTests
 	}
 
     [Fact]
-	public void UpdatesEmployeeWithContract()
+	public void Updates_an_Employee_with_Contract()
 	{
 		var today = DateOnly.FromDateTime(DateTime.Today);
 		var tomorrow = today.AddDays(1);

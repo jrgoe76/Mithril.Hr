@@ -10,7 +10,7 @@ namespace Mithril.Hr.Api.Tests.Controllers;
 public sealed class EmployeesControllerTests : IntegrationTestBase
 {
     [Fact]
-    public async Task GetsAllEmployees()
+    public async Task Returns_all_Employees()
     {
         var liamHill = EmployeeEfTestSeed.LiamHill();
         var liamHillDetail = EmployeeDetailTestSeed.LiamHill;
@@ -28,7 +28,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     }
 
     [Fact]
-    public async Task GetsEmployeeById()
+    public async Task Returns_an_Employee_by_its_Id()
     {
         var liamHill = EmployeeEfTestSeed.LiamHill();
         var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
@@ -46,7 +46,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     }
 
     [Fact]
-    public async Task AddsEmployee()
+    public async Task Adds_an_Employee()
     {
         var paulaCarrAddInfo = AddEmployeeInfoSeed.PaulaCarr;
 
@@ -62,7 +62,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     }
 
     [Fact]
-    public async Task UpdatesEmployee()
+    public async Task Updates_an_Employee()
     {
 	    var dianaKingEf = EmployeeEfTestSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;

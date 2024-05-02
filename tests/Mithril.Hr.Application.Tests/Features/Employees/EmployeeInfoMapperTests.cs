@@ -9,7 +9,7 @@ namespace Mithril.Hr.Application.Tests.Features.Employees;
 public sealed class EmployeeInfoMapperTests
 {
     [Fact]
-    public void MapsEmployeeInfo()
+    public void Maps_Employee_to_EmployeeInfo()
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
 

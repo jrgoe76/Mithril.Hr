@@ -6,35 +6,43 @@ namespace Mithril.Hr.Tests.Domain.Demographics;
 
 public sealed class PersonNameTests
 {
-    [Fact]
-    public void ThrowsArgumentExceptionCausedByFirstName()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    public void Throws_an_error_caused_by_a_null_or_empty_FirstName(string? firstName)
     {
-        ((Func<PersonName>)(() => new PersonName(null!, "Doe")))
-            .Should().Throw<ArgumentException>();
-        ((Func<PersonName>)(() => new PersonName(string.Empty, "Doe")))
-            .Should().Throw<ArgumentException>();
-    }
-
-    [Fact]
-    public void ThrowsArgumentExceptionCausedByLastName()
-    {
-        ((Func<PersonName>)(() => new PersonName("Joe", null!)))
-            .Should().Throw<ArgumentException>();
-        ((Func<PersonName>)(() => new PersonName("Joe", string.Empty)))
+        ((Func<PersonName>)(() => new PersonName(firstName!, "Hill")))
             .Should().Throw<ArgumentException>();
     }
 
-    [Fact]
-    public void ReturnsRepresentationWithoutMiddleInitial()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    public void Throws_an_error_caused_by_a_null_or_empty_LastName(string? lastName)
     {
-        new PersonName("Joe", "Doe").ToString()
-            .Should().Be("Joe Doe");
+        ((Func<PersonName>)(() => new PersonName("Liam", lastName!)))
+            .Should().Throw<ArgumentException>();
     }
 
-    [Fact]
-    public void ReturnsRepresentation()
+    [Theory]
+    [InlineData("Liam", "Hill", "Liam Hill")]
+    [InlineData("Paula", "Carr", "Paula Carr")]
+    [InlineData("Diana", "King", "Diana King")]
+    public void Returns_the_representation_without_MiddleInitial(
+        string firstName, string lastName, string representation)
     {
-        new PersonName("Joe", "A", "Doe").ToString()
-            .Should().Be("Joe A. Doe");
+        new PersonName(firstName, lastName).ToString()
+            .Should().Be(representation);
+    }
+
+    [Theory]
+    [InlineData("Liam", "P", "Hill", "Liam P. Hill")]
+    [InlineData("Paula", "D", "Carr", "Paula D. Carr")]
+    [InlineData("Diana", "J", "King", "Diana J. King")]
+    public void Returns_the_representation(
+        string firstName, string middleInitial, string lastName, string representation)
+    {
+        new PersonName(firstName, middleInitial, lastName).ToString()
+            .Should().Be(representation);
     }
 }

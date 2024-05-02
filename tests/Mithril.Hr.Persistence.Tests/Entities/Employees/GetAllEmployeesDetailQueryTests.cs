@@ -10,7 +10,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 public sealed class GetAllEmployeesDetailQueryTests
 {
     [Fact]
-    public async Task ReturnsAllEmployeesDetail()
+    public async Task Returns_all_EmployeesDetail()
     {
 	    var liamHillEf = EmployeeEfTestSeed.LiamHill();
 

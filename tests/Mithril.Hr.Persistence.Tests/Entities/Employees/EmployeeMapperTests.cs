@@ -11,7 +11,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Employees;
 public sealed class EmployeeMapperTests
 {
     [Fact]
-	public void MapsEmployee()
+	public void Maps_an_EmployeeEf_into_an_Employee()
 	{
 		var liamHill = EmployeeSeed.LiamHill();
 		var liamHillEf = EmployeeEfTestSeed.LiamHill();

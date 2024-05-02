@@ -12,6 +12,7 @@ public sealed class DbSeeder(
     DataContext dbContext,
     AddPositionFeature addPositionFeature,
     AddEmployeeFeature addEmployeeFeature,
+    AssignContractToEmployeeFeature assignContractFeature,
     ILogger<DbSeeder> logger)
 {
 	public static Task Run(
@@ -26,7 +27,7 @@ public sealed class DbSeeder(
 
     private async Task Run(string environment)
     {
-	    logger.LogInformation($"Seeding {environment} database...");
+	    logger.LogInformation("Seeding {Environment} database...", environment);
 
 	    await dbContext.Database.EnsureCreatedAsync();
 
@@ -52,10 +53,15 @@ public sealed class DbSeeder(
 
     private async Task SeedEmployees()
     {
+        var today = DateOnly.FromDateTime(DateTime.Today);
+
 	    logger.LogInformation("[x] Adding Employees");
 
         await addEmployeeFeature.Add(AddEmployeeInfoSeed.LiamHill);
+
         await addEmployeeFeature.Add(AddEmployeeInfoSeed.PaulaCarr);
+
         await addEmployeeFeature.Add(AddEmployeeInfoSeed.DianaKing);
+        await assignContractFeature.Assign(AssignContractInfoSeed.DianaKing(today));
     }
 }

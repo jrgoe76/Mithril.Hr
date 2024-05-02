@@ -10,7 +10,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Positions;
 public sealed class PositionRepositoryTests
 {
 	[Fact]
-	public async Task AddsPositionIntoDbContext()
+	public async Task Adds_Position_into_DbContext()
 	{
 		using var dbContextFactory = DbContextTestFactory.New();
 		await using var dbContext = dbContextFactory.Create();

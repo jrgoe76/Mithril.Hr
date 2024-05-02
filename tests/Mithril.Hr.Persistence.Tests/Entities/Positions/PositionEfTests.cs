@@ -9,7 +9,7 @@ namespace Mithril.Hr.Persistence.Tests.Entities.Positions;
 public sealed class PositionEfTests
 {
 	[Fact]
-	public void UpdatesPosition()
+	public void Updates_Position()
 	{
 		var ceo = PositionSeed.ChiefExecutiveOfficer;
 		var ceoEf = PositionEfTestSeed.ChiefExecutiveOfficer();
