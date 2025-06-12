@@ -4,7 +4,7 @@ using Mithril.Hr.Domain.Tests.Seeds.Employees;
 using Mithril.Hr.Infrastructure.Persistence.Model.Demographics;
 using Mithril.Hr.Infrastructure.Persistence.Model.Education;
 using Mithril.Hr.Infrastructure.Persistence.Model.Employees;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
@@ -15,7 +15,7 @@ public sealed class EmployeeEfTests
     public void Updates_an_Employee()
     {
         var liamHill = EmployeeSeed.LiamHill();
-        var liamHillEf = EmployeeEfTestSeed.LiamHill();
+        var liamHillEf = EmployeeEfSeed.LiamHill();
 
         var latestVersion = liamHillEf.Version;
         var version = Guid.NewGuid();
@@ -39,7 +39,7 @@ public sealed class EmployeeEfTests
         var tomorrow = today.AddDays(1);
 
         var dianaKing = EmployeeTestSeed.DianaKingWithContract(today, tomorrow);
-        var dianaKingEf = EmployeeEfTestSeed.DianaKingWithContract(today, tomorrow);
+        var dianaKingEf = EmployeeEfSeed.DianaKingAsChiefFinancialOfficer(today, tomorrow);
 
         var latestVersion = dianaKingEf.Version;
         var version = Guid.NewGuid();

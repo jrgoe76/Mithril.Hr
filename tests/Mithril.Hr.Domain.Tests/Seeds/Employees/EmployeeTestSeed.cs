@@ -25,6 +25,6 @@ public static class EmployeeTestSeed
         => new(_dianaKing.EmployeeId, _dianaKing.Name, _dianaKing.Gender,
             _dianaKing.Email, _dianaKing.Address, _dianaKing.Degree)
         {
-            Contract = ContractSeed.DianaKing(startedOn) with { EndedOn = endedOn }
+            Contract = ContractSeed.DianaKingAsChiefFinancialOfficer(startedOn) with { EndedOn = endedOn }
         };
 }

@@ -4,7 +4,7 @@ using Mithril.Hr.Domain.Model.Positions;
 
 namespace Mithril.Hr.Domain.Model.Employees;
 
-public record Employee
+public sealed record Employee
 {
     public Guid EmployeeId { get; init; }
     public PersonName Name { get; private set; }

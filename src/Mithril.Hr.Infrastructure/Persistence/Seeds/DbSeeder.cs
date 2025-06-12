@@ -1,18 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Mithril.Hr.Application.Features.Employees;
-using Mithril.Hr.Application.Features.Positions;
-using Mithril.Hr.Application.Seeds.Employees;
-using Mithril.Hr.Application.Seeds.Positions;
 using Mithril.Hr.Infrastructure.Persistence.Model;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Positions;
 
 namespace Mithril.Hr.Infrastructure.Persistence.Seeds;
 
 public sealed class DbSeeder(
     DataContext dbContext,
-    AddPositionFeature addPositionFeature,
-    AddEmployeeFeature addEmployeeFeature,
-    AssignContractToEmployeeFeature assignContractFeature,
     ILogger<DbSeeder> logger)
 {
     public static Task Run(
@@ -39,40 +34,30 @@ public sealed class DbSeeder(
     {
         logger.LogInformation("[x] Adding Positions");
 
-        await addPositionFeature.Add(PositionInfoSeed.ChiefExecutiveOfficer);
-        await addPositionFeature.Add(PositionInfoSeed.ChiefOperatingOfficer);
-        await addPositionFeature.Add(PositionInfoSeed.StoreManager);
-        await addPositionFeature.Add(PositionInfoSeed.SectionLeader);
-        await addPositionFeature.Add(PositionInfoSeed.StockAssistant);
-        await addPositionFeature.Add(PositionInfoSeed.ChiefFinancialOfficer);
-        await addPositionFeature.Add(PositionInfoSeed.AccountingManager);
-        await addPositionFeature.Add(PositionInfoSeed.Accountant);
+        await dbContext.Positions.AddRangeAsync(
+            PositionEfSeed.ChiefExecutiveOfficer(),
+            PositionEfSeed.ChiefOperatingOfficer(),
+            PositionEfSeed.StoreManager(),
+            PositionEfSeed.SectionLeader(),
+            PositionEfSeed.StockAssistant(),
+            PositionEfSeed.ChiefFinancialOfficer(),
+            PositionEfSeed.AccountingManager(),
+            PositionEfSeed.Accountant());
 
         await dbContext.SaveChangesAsync();
     }
 
     private async Task SeedEmployees()
     {
-        DateOnly today = DateOnly.FromDateTime(DateTime.Today);
-
         logger.LogInformation("[x] Adding Employees");
 
-        var liamHillInfo = await addEmployeeFeature.Add(AddEmployeeInfoSeed.LiamHill);
+        DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-        await addEmployeeFeature.Add(AddEmployeeInfoSeed.PaulaCarr);
+        await dbContext.Employees.AddRangeAsync(
+            EmployeeEfSeed.LiamHill(),
+            EmployeeEfSeed.PaulaCarr(),
+            EmployeeEfSeed.DianaKingAsChiefFinancialOfficer(today.AddMonths(-1)));
 
-        var dianaKingInfo = await addEmployeeFeature.Add(AddEmployeeInfoSeed.DianaKing);
-
-        // Save changes to ensure employees are persisted before assigning contracts
         await dbContext.SaveChangesAsync();
-
-        // Use the actual employee IDs returned from the add operations
-        var assignContractInfo = new AssignContractInfo(
-            dianaKingInfo.EmployeeId,
-            PositionInfoSeed.ChiefFinancialOfficer.PositionCode,
-            liamHillInfo.EmployeeId,
-            today);
-
-        await assignContractFeature.Assign(assignContractInfo);
     }
 }

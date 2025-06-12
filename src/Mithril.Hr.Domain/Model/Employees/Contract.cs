@@ -2,7 +2,7 @@
 
 namespace Mithril.Hr.Domain.Model.Employees;
 
-public record Contract
+public sealed record Contract
 {
     public Position Position { get; init; }
     public Guid? SupervisorId { get; init; }

@@ -1,6 +1,6 @@
 ﻿namespace Mithril.Hr.Domain.Model.Demographics;
 
-public record PersonName
+public sealed record PersonName
 {
     public string FirstName { get; init; }
     public string? MiddleInitial { get; init; }

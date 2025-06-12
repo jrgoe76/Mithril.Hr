@@ -6,8 +6,8 @@ using Mithril.Hr.Infrastructure.Persistence.Model;
 using Mithril.Hr.Infrastructure.Persistence.Model.Demographics;
 using Mithril.Hr.Infrastructure.Persistence.Model.Education;
 using Mithril.Hr.Infrastructure.Persistence.Model.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
 using Mithril.Hr.Infrastructure.Tests.Helpers;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
@@ -15,7 +15,7 @@ namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
 public sealed class EmployeeRepositoryTests
 {
     private readonly Employee _liamHill = EmployeeSeed.LiamHill();
-    private readonly EmployeeEf _liamHillEf = EmployeeEfTestSeed.LiamHill();
+    private readonly EmployeeEf _liamHillEf = EmployeeEfSeed.LiamHill();
 
     [Fact]
     public async Task Adds_an_Employee_into_the_DbContext()

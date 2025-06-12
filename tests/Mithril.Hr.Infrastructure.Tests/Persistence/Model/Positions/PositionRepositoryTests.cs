@@ -12,10 +12,11 @@ public sealed class PositionRepositoryTests
     [Fact]
     public async Task Adds_Position_into_DbContext()
     {
-        using var dbContextFactory = DbContextTestFactory.New();
-        await using var dbContext = dbContextFactory.Create();
+        using DbContextTestFactory dbContextFactory = DbContextTestFactory.New();
+        await using DataContextSpy dbContext = dbContextFactory.Create();
 
-        await new PositionRepository(dbContext).Add(PositionSeed.ChiefExecutiveOfficer);
+        await new PositionRepository(dbContext)
+            .Add(PositionSeed.ChiefExecutiveOfficer());
 
         (await dbContext.Positions.FirstAsync()).Version
             .Should().NotBeEmpty();

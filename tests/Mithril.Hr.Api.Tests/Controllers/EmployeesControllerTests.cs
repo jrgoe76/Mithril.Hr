@@ -2,7 +2,7 @@
 using Mithril.Hr.Application.Features.Employees;
 using Mithril.Hr.Application.Seeds.Employees;
 using Mithril.Hr.Application.Tests.Seeds.Employees;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Api.Tests.Controllers;
@@ -12,7 +12,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task Returns_all_Employees()
     {
-        var liamHill = EmployeeEfTestSeed.LiamHill();
+        var liamHill = EmployeeEfSeed.LiamHill();
         var liamHillDetail = EmployeeDetailTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
@@ -30,7 +30,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task Returns_an_Employee_by_its_Id()
     {
-        var liamHill = EmployeeEfTestSeed.LiamHill();
+        var liamHill = EmployeeEfSeed.LiamHill();
         var liamHillInfo = EmployeeInfoTestSeed.LiamHill;
 
         await DbContext.Employees.AddAsync(liamHill);
@@ -64,7 +64,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task Updates_an_Employee()
     {
-        var dianaKingEf = EmployeeEfTestSeed.DianaKing();
+        var dianaKingEf = EmployeeEfSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
 
         await DbContext.Employees.AddAsync(dianaKingEf);

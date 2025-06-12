@@ -1,6 +1,6 @@
 ﻿namespace Mithril.Hr.Domain.Model.Demographics;
 
-public record Gender
+public sealed record Gender
 {
     public static Gender Male { get; } = new(nameof(Values.Male));
     public static Gender Female { get; } = new(nameof(Values.Female));

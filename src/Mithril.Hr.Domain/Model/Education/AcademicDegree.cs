@@ -1,6 +1,6 @@
 ﻿namespace Mithril.Hr.Domain.Model.Education;
 
-public record AcademicDegree
+public sealed record AcademicDegree
 {
     public static AcademicDegree Associate { get; } = new(nameof(Values.Associate));
     public static AcademicDegree Bachelor { get; } = new(nameof(Values.Bachelor));

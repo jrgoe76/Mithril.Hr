@@ -3,7 +3,7 @@ using Mithril.Hr.Domain.Seeds.Employees;
 using Mithril.Hr.Infrastructure.Persistence.Model.Demographics;
 using Mithril.Hr.Infrastructure.Persistence.Model.Education;
 using Mithril.Hr.Infrastructure.Persistence.Model.Employees;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
@@ -14,7 +14,7 @@ public sealed class EmployeeMapperTests
     public void Maps_an_EmployeeEf_into_an_Employee()
     {
         var liamHill = EmployeeSeed.LiamHill();
-        var liamHillEf = EmployeeEfTestSeed.LiamHill();
+        var liamHillEf = EmployeeEfSeed.LiamHill();
 
         new EmployeeMapper(
                 new GenderMapper(),

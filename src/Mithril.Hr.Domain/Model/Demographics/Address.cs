@@ -1,6 +1,6 @@
 ﻿namespace Mithril.Hr.Domain.Model.Demographics;
 
-public record Address
+public sealed record Address
 {
     public string AddressLine1 { get; init; }
     public string? AddressLine2 { get; init; }

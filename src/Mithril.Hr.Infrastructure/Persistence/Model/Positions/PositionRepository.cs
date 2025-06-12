@@ -8,9 +8,7 @@ internal sealed class PositionRepository(
 {
     public async Task Add(Position position)
     {
-        var positionEf = new PositionEf();
-
-        positionEf.Update(position, Guid.NewGuid());
+        var positionEf = new PositionEf(position, Guid.NewGuid());
 
         await dbContext.Positions.AddAsync(positionEf);
         await dbContext.SaveChangesAsync();

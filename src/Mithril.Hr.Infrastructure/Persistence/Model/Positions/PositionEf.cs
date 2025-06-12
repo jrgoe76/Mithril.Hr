@@ -9,12 +9,30 @@ public record PositionEf
 
     public Guid Version { get; set; }
 
-    public PositionEf Update(Position position, Guid version)
+    internal PositionEf() { }
+
+    public PositionEf(
+        Position position,
+        Guid version)
     {
         PositionCode = position.PositionCode;
-        Name = position.Name;
-        Version = version;
+        SetFields(position, version);
+    }
+
+    public PositionEf Update(
+        Position position,
+        Guid version)
+    {
+        SetFields(position, version);
 
         return this;
+    }
+
+    private void SetFields(
+        Position position,
+        Guid version)
+    {
+        Name = position.Name;
+        Version = version;
     }
 }

@@ -15,7 +15,7 @@ public sealed class AssignContractToEmployeeFeatureTests
 {
     private static readonly DateOnly _today = DateOnly.FromDateTime(DateTime.Today);
 
-    private readonly Position _position = PositionSeed.ChiefFinancialOfficer;
+    private readonly Position _position = PositionSeed.ChiefFinancialOfficer();
     private readonly Employee _dianaKing = EmployeeSeed.DianaKing();
     private readonly Employee _dianaKingWithContract = EmployeeTestSeed.DianaKingWithContract(_today);
 

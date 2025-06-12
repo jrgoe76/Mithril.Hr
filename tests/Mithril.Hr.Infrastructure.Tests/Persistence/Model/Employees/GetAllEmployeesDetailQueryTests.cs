@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Tests.Seeds.Employees;
 using Mithril.Hr.Infrastructure.Persistence.Model.Employees;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Employees;
 using Mithril.Hr.Infrastructure.Tests.Helpers;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
@@ -12,7 +12,7 @@ public sealed class GetAllEmployeesDetailQueryTests
     [Fact]
     public async Task Returns_all_EmployeesDetail()
     {
-        var liamHillEf = EmployeeEfTestSeed.LiamHill();
+        var liamHillEf = EmployeeEfSeed.LiamHill();
 
         using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();

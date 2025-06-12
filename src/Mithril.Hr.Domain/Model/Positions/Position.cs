@@ -1,6 +1,6 @@
 ﻿namespace Mithril.Hr.Domain.Model.Positions;
 
-public record Position
+public sealed record Position
 {
     public string PositionCode { get; init; }
     public string Name { get; init; }

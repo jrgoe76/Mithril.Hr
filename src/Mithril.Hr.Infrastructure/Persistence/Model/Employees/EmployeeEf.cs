@@ -23,25 +23,25 @@ public record EmployeeEf
 
     public ContractEf? Contract { get; set; }
 
-    public EmployeeEf Update(
+    internal EmployeeEf() { }
+
+    public EmployeeEf(
         Employee employee,
         GenderMapper genderMapper,
         AcademicDegreeMapper academicDegreeMapper,
         Guid version)
     {
         EmployeeId = employee.EmployeeId;
-        FirstName = employee.Name.FirstName;
-        MiddleInitial = employee.Name.MiddleInitial;
-        LastName = employee.Name.LastName;
-        Gender = genderMapper.MapCode(employee.Gender);
-        EmailAddress = employee.Email.Address;
-        AddressLine1 = employee.Address.AddressLine1;
-        AddressLine2 = employee.Address.AddressLine2;
-        City = employee.Address.City;
-        State = employee.Address.State;
-        Zipcode = employee.Address.Zipcode;
-        Degree = academicDegreeMapper.MapCode(employee.Degree);
-        Version = version;
+        SetFields(employee, genderMapper, academicDegreeMapper, version);
+    }
+
+    public EmployeeEf Update(
+        Employee employee,
+        GenderMapper genderMapper,
+        AcademicDegreeMapper academicDegreeMapper,
+        Guid version)
+    {
+        SetFields(employee, genderMapper, academicDegreeMapper, version);
 
         ContractEf? contract = employee.Contract != null
             ? new ContractEf
@@ -55,5 +55,25 @@ public record EmployeeEf
         Contract = contract;
 
         return this;
+    }
+
+    private void SetFields(
+        Employee employee,
+        GenderMapper genderMapper,
+        AcademicDegreeMapper academicDegreeMapper,
+        Guid version)
+    {
+        FirstName = employee.Name.FirstName;
+        MiddleInitial = employee.Name.MiddleInitial;
+        LastName = employee.Name.LastName;
+        Gender = genderMapper.MapCode(employee.Gender);
+        EmailAddress = employee.Email.Address;
+        AddressLine1 = employee.Address.AddressLine1;
+        AddressLine2 = employee.Address.AddressLine2;
+        City = employee.Address.City;
+        State = employee.Address.State;
+        Zipcode = employee.Address.Zipcode;
+        Degree = academicDegreeMapper.MapCode(employee.Degree);
+        Version = version;
     }
 }

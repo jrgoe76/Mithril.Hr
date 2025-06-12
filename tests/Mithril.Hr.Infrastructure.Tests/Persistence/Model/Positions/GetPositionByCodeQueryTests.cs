@@ -1,14 +1,17 @@
 ﻿using FluentAssertions;
+using Mithril.Hr.Domain.Model.Positions;
 using Mithril.Hr.Domain.Seeds.Positions;
 using Mithril.Hr.Infrastructure.Persistence.Model.Positions;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Positions;
 using Mithril.Hr.Infrastructure.Tests.Helpers;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Positions;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Positions;
 
 public sealed class GetPositionByCodeQueryTests
 {
+    private readonly Position _ceo = PositionSeed.ChiefExecutiveOfficer();
+
     [Fact]
     public async Task Returns_a_Position_by_its_Code()
     {
@@ -16,14 +19,14 @@ public sealed class GetPositionByCodeQueryTests
         await using var dbContext = dbContextFactory.Create();
 
         await dbContext.Positions.AddRangeAsync(
-            PositionEfTestSeed.ChiefExecutiveOfficer(),
-            PositionEfTestSeed.ChiefOperatingOfficer());
+            PositionEfSeed.ChiefExecutiveOfficer(),
+            PositionEfSeed.ChiefOperatingOfficer());
         await dbContext.SaveChangesAsync();
 
         (await new GetPositionByCodeQuery(
                     dbContext,
                     new PositionMapper())
-                .Get(PositionSeed.ChiefExecutiveOfficer.PositionCode))
-            .Should().Be(PositionSeed.ChiefExecutiveOfficer);
+                .Get(_ceo.PositionCode))
+            .Should().Be(_ceo);
     }
 }

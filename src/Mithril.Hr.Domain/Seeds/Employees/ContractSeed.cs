@@ -7,6 +7,10 @@ public static class ContractSeed
 {
     private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
 
-    public static Contract DianaKing(DateOnly startedOn)
-        => new(PositionSeed.ChiefFinancialOfficer, _liamHill.EmployeeId, startedOn);
+    public static Contract DianaKingAsChiefFinancialOfficer(
+        DateOnly startedOn)
+        => new(
+            PositionSeed.ChiefFinancialOfficer(),
+            _liamHill.EmployeeId,
+            startedOn);
 }

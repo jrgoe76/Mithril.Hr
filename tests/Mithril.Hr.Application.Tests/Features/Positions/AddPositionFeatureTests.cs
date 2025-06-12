@@ -10,7 +10,7 @@ namespace Mithril.Hr.Application.Tests.Features.Positions;
 
 public sealed class AddPositionFeatureTests
 {
-    private readonly Position _ceo = PositionSeed.ChiefExecutiveOfficer;
+    private readonly Position _ceo = PositionSeed.ChiefExecutiveOfficer();
     private readonly PositionInfo _ceoInfo = PositionInfoSeed.ChiefExecutiveOfficer;
 
     private readonly Mock<IPositionRepository> _positionRepositoryMock = new();

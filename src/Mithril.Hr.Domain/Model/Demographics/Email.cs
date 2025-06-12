@@ -2,7 +2,7 @@
 
 namespace Mithril.Hr.Domain.Model.Demographics;
 
-public record Email
+public sealed record Email
 {
     public string Address { get; init; }
 

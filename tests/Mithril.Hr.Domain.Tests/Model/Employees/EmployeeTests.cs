@@ -64,7 +64,7 @@ public sealed class EmployeeTests
     public void Assigns_a_Contract_to_an_Employee()
     {
         var liamHill = EmployeeSeed.LiamHill();
-        var dianaKingContract = ContractSeed.DianaKing(DateOnly.FromDateTime(DateTime.Today));
+        var dianaKingContract = ContractSeed.DianaKingAsChiefFinancialOfficer(DateOnly.FromDateTime(DateTime.Today));
 
         var employee = new Employee(Guid.NewGuid(), _name, _gender, _email, _address, _degree);
 

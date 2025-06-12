@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Domain.Seeds.Positions;
 using Mithril.Hr.Infrastructure.Persistence.Model.Positions;
-using Mithril.Hr.Infrastructure.Tests.Seeds.Positions;
+using Mithril.Hr.Infrastructure.Persistence.Seeds.Positions;
 using Xunit;
 
 namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Positions;
@@ -11,8 +11,8 @@ public sealed class PositionEfTests
     [Fact]
     public void Updates_Position()
     {
-        var ceo = PositionSeed.ChiefExecutiveOfficer;
-        var ceoEf = PositionEfTestSeed.ChiefExecutiveOfficer();
+        var ceo = PositionSeed.ChiefExecutiveOfficer();
+        var ceoEf = PositionEfSeed.ChiefExecutiveOfficer();
 
         var latestVersion = ceoEf.Version;
         var version = Guid.NewGuid();

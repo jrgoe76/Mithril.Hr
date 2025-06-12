@@ -13,7 +13,7 @@ public static class AssignContractInfoSeed
     public static AssignContractInfo DianaKing(DateOnly startDate)
         => new(
             _dianaKing.EmployeeId,
-            PositionSeed.ChiefFinancialOfficer.PositionCode,
+            PositionSeed.ChiefFinancialOfficer().PositionCode,
             _liamHill.EmployeeId,
             startDate);
 }

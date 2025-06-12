@@ -18,7 +18,7 @@ public sealed class ContractTests
     [Fact]
     public void Throws_an_error_caused_by_an_empty_SupervisorId()
     {
-        ((Func<Contract>)(() => new Contract(PositionSeed.Accountant, Guid.Empty, DateOnly.MaxValue)))
+        ((Func<Contract>)(() => new Contract(PositionSeed.Accountant(), Guid.Empty, DateOnly.MaxValue)))
             .Should().Throw<ArgumentException>();
     }
 
