@@ -1,8 +1,8 @@
 using Mithril.Hr.Api;
 using Mithril.Hr.Application.Configuration;
-using Mithril.Hr.Configuration;
-using Mithril.Hr.Persistence.Configuration;
-using Mithril.Hr.Persistence.Seeds;
+using Mithril.Hr.Domain.Configuration;
+using Mithril.Hr.Infrastructure.Configuration;
+using Mithril.Hr.Infrastructure.Persistence.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 

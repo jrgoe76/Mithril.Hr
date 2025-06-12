@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Mithril.Hr.Persistence.Data;
-using Mithril.Hr.Persistence.Tests.Configuration;
+using Mithril.Hr.Infrastructure.Persistence.Model;
+using Mithril.Hr.Infrastructure.Tests.Configuration;
 
 namespace Mithril.Hr.Api.Tests.Controllers;
 

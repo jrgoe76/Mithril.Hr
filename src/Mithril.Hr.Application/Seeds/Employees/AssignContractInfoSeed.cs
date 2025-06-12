@@ -1,7 +1,7 @@
 ﻿using Mithril.Hr.Application.Features.Employees;
-using Mithril.Hr.Domain.Employees;
-using Mithril.Hr.Seeds.Employees;
-using Mithril.Hr.Seeds.Positions;
+using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Seeds.Employees;
+using Mithril.Hr.Domain.Seeds.Positions;
 
 namespace Mithril.Hr.Application.Seeds.Employees;
 

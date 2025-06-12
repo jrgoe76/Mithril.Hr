@@ -2,7 +2,7 @@
 using Mithril.Hr.Application.Features.Employees;
 using Mithril.Hr.Application.Seeds.Employees;
 using Mithril.Hr.Application.Tests.Seeds.Employees;
-using Mithril.Hr.Persistence.Tests.Seeds.Employees;
+using Mithril.Hr.Infrastructure.Tests.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Api.Tests.Controllers;

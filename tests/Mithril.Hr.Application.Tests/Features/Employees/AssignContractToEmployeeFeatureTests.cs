@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Employees;
 using Mithril.Hr.Application.Seeds.Employees;
-using Mithril.Hr.Domain.Employees;
-using Mithril.Hr.Domain.Positions;
-using Mithril.Hr.Seeds.Employees;
-using Mithril.Hr.Seeds.Positions;
-using Mithril.Hr.Tests.Seeds.Employees;
+using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Model.Positions;
+using Mithril.Hr.Domain.Seeds.Employees;
+using Mithril.Hr.Domain.Seeds.Positions;
+using Mithril.Hr.Domain.Tests.Seeds.Employees;
 using Moq;
 using Xunit;
 

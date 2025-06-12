@@ -1,5 +1,5 @@
-﻿using Mithril.Hr.Domain.Employees;
-using Mithril.Hr.Domain.Positions;
+﻿using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Model.Positions;
 
 namespace Mithril.Hr.Application.Features.Employees;
 

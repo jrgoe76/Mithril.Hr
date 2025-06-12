@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Positions;
 using Mithril.Hr.Application.Seeds.Positions;
-using Mithril.Hr.Domain.Positions;
-using Mithril.Hr.Seeds.Positions;
+using Mithril.Hr.Domain.Model.Positions;
+using Mithril.Hr.Domain.Seeds.Positions;
 using Moq;
 using Xunit;
 

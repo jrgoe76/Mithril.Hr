@@ -1,5 +1,5 @@
 ﻿using Mithril.Hr.Application.Features.Positions;
-using Mithril.Hr.Seeds.Positions;
+using Mithril.Hr.Domain.Seeds.Positions;
 
 namespace Mithril.Hr.Application.Seeds.Positions;
 

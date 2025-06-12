@@ -1,7 +1,8 @@
 ﻿using FluentAssertions;
 using Mithril.Hr.Application.Features.Employees;
 using Mithril.Hr.Application.Tests.Seeds.Employees;
-using Mithril.Hr.Tests.Seeds.Employees;
+using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Tests.Seeds.Employees;
 using Xunit;
 
 namespace Mithril.Hr.Application.Tests.Features.Employees;

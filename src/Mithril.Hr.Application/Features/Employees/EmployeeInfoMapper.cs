@@ -1,4 +1,4 @@
-﻿using Mithril.Hr.Domain.Employees;
+﻿using Mithril.Hr.Domain.Model.Employees;
 
 namespace Mithril.Hr.Application.Features.Employees;
 

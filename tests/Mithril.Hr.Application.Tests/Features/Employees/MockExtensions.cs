@@ -1,6 +1,6 @@
-﻿using Mithril.Hr.Domain;
-using Mithril.Hr.Domain.Employees;
-using Mithril.Hr.Domain.Positions;
+﻿using Mithril.Hr.Domain.Model;
+using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Model.Positions;
 using Moq;
 
 namespace Mithril.Hr.Application.Tests.Features.Employees;

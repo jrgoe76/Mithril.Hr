@@ -1,7 +1,7 @@
-﻿using Mithril.Hr.Domain;
-using Mithril.Hr.Domain.Demographics;
-using Mithril.Hr.Domain.Education;
-using Mithril.Hr.Domain.Employees;
+﻿using Mithril.Hr.Domain.Model;
+using Mithril.Hr.Domain.Model.Demographics;
+using Mithril.Hr.Domain.Model.Education;
+using Mithril.Hr.Domain.Model.Employees;
 
 namespace Mithril.Hr.Application.Features.Employees;
 

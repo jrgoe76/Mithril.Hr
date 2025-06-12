@@ -1,6 +1,6 @@
 ﻿using Mithril.Hr.Application.Features.Employees;
-using Mithril.Hr.Domain.Employees;
-using Mithril.Hr.Seeds.Employees;
+using Mithril.Hr.Domain.Model.Employees;
+using Mithril.Hr.Domain.Seeds.Employees;
 
 namespace Mithril.Hr.Application.Tests.Seeds.Employees;
 
