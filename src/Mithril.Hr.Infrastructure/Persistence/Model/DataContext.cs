@@ -18,6 +18,6 @@ public class DataContext(
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfigurationsFromAssembly(
-	        typeof(DataContext).Assembly);
+            typeof(DataContext).Assembly);
     }
 }

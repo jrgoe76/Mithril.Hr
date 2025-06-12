@@ -8,6 +8,6 @@ internal sealed class GetPositionByCodeQuery(
     PositionMapper positionMapper) : IGetPositionByCodeQuery
 {
     public async Task<Position> Get(string positionCode)
-	    => positionMapper.Map(await dbContext.Positions
-		    .SingleAsync(position => position.PositionCode == positionCode));
+        => positionMapper.Map(await dbContext.Positions
+            .SingleAsync(position => position.PositionCode == positionCode));
 }

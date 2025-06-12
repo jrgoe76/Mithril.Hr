@@ -10,7 +10,7 @@ public static class AddEmployeeInfoSeed
     private static readonly Employee _paulaCarr = EmployeeSeed.PaulaCarr();
     private static readonly Employee _dianaKing = EmployeeSeed.DianaKing();
 
-    public static AddEmployeeInfo LiamHill = new (
+    public static AddEmployeeInfo LiamHill = new(
         _liamHill.Name.FirstName,
         _liamHill.Name.MiddleInitial,
         _liamHill.Name.LastName,
@@ -23,7 +23,7 @@ public static class AddEmployeeInfoSeed
         _liamHill.Address.Zipcode,
         _liamHill.Degree.ToString());
 
-    public static AddEmployeeInfo PaulaCarr = new (
+    public static AddEmployeeInfo PaulaCarr = new(
         _paulaCarr.Name.FirstName,
         _paulaCarr.Name.MiddleInitial,
         _paulaCarr.Name.LastName,
@@ -36,7 +36,7 @@ public static class AddEmployeeInfoSeed
         _paulaCarr.Address.Zipcode,
         _paulaCarr.Degree.ToString());
 
-    public static AddEmployeeInfo DianaKing = new (
+    public static AddEmployeeInfo DianaKing = new(
         _dianaKing.Name.FirstName,
         _dianaKing.Name.MiddleInitial,
         _dianaKing.Name.LastName,

@@ -6,12 +6,12 @@ namespace Mithril.Hr.Domain.Tests.Model.Demographics;
 
 public sealed class AddressTests
 {
-	private const string _addressLine1 = "123 Main St";
-	private const string _city = "Tampa";
-	private const string _state = "FL";
-	private const string _zipcode = "12345";
+    private const string _addressLine1 = "123 Main St";
+    private const string _city = "Tampa";
+    private const string _state = "FL";
+    private const string _zipcode = "12345";
 
-	[Theory]
+    [Theory]
     [InlineData(null)]
     [InlineData("")]
     public void Throws_an_error_caused_by_a_null_or_empty_AddressLine1(string? addressLine1)
@@ -59,11 +59,11 @@ public sealed class AddressTests
         string representation)
     {
         new Address(addressLine1, city, state, zipcode).ToString()
-	        .Should().Be(representation);
+            .Should().Be(representation);
     }
 
     [Theory]
-    [InlineData("123 Main St", "Apt B", "Tampa", "FL", 
+    [InlineData("123 Main St", "Apt B", "Tampa", "FL",
         "12345", "123 Main St Apt B, Tampa, FL 12345")]
     [InlineData("374 Madison Ave", "Apt 32", "York", "PA", "43848",
         "374 Madison Ave Apt 32, York, PA 43848")]

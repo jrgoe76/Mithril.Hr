@@ -25,7 +25,7 @@ public sealed class AcademicDegreeMapperTests
     [InlineData(nameof(AcademicDegree.Values.PhD), AcademicDegreeMapper.Codes.PhD)]
     internal void Maps_an_AcademicDegree_into_its_Code(string academicDegree, string code)
     {
-	    new AcademicDegreeMapper().MapCode(new AcademicDegree(academicDegree))
-		    .Should().Be(code);
+        new AcademicDegreeMapper().MapCode(new AcademicDegree(academicDegree))
+            .Should().Be(code);
     }
 }

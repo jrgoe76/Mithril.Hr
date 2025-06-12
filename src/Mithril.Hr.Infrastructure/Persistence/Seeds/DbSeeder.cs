@@ -15,21 +15,21 @@ public sealed class DbSeeder(
     AssignContractToEmployeeFeature assignContractFeature,
     ILogger<DbSeeder> logger)
 {
-	public static Task Run(
-		IServiceProvider serviceProvider,
-		string environment)
-	{
-		IServiceScope scope = serviceProvider.CreateScope();
-		DbSeeder dbSeeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
+    public static Task Run(
+        IServiceProvider serviceProvider,
+        string environment)
+    {
+        IServiceScope scope = serviceProvider.CreateScope();
+        DbSeeder dbSeeder = scope.ServiceProvider.GetRequiredService<DbSeeder>();
 
-		return dbSeeder.Run(environment);
-	}
+        return dbSeeder.Run(environment);
+    }
 
     private async Task Run(string environment)
     {
-	    logger.LogInformation("Seeding {Environment} database...", environment);
+        logger.LogInformation("Seeding {Environment} database...", environment);
 
-	    await dbContext.Database.EnsureCreatedAsync();
+        await dbContext.Database.EnsureCreatedAsync();
 
         await SeedPositions();
         await SeedEmployees();
@@ -37,7 +37,7 @@ public sealed class DbSeeder(
 
     private async Task SeedPositions()
     {
-	    logger.LogInformation("[x] Adding Positions");
+        logger.LogInformation("[x] Adding Positions");
 
         await addPositionFeature.Add(PositionInfoSeed.ChiefExecutiveOfficer);
         await addPositionFeature.Add(PositionInfoSeed.ChiefOperatingOfficer);
@@ -55,7 +55,7 @@ public sealed class DbSeeder(
     {
         DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-	    logger.LogInformation("[x] Adding Employees");
+        logger.LogInformation("[x] Adding Employees");
 
         var liamHillInfo = await addEmployeeFeature.Add(AddEmployeeInfoSeed.LiamHill);
 

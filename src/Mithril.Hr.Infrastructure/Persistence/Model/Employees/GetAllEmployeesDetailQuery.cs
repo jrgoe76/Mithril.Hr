@@ -7,11 +7,11 @@ internal sealed class GetAllEmployeesDetailQuery(
     DataContext dbContext) : IGetAllEmployeesDetailQuery
 {
     public async Task<ICollection<EmployeeDetail>> Get()
-	    => await dbContext.Employees
-			.Select(employee => new EmployeeDetail(
-				employee.EmployeeId,
-				employee.FirstName,
-				employee.MiddleInitial,
-				employee.LastName))
-			.ToListAsync();
+        => await dbContext.Employees
+            .Select(employee => new EmployeeDetail(
+                employee.EmployeeId,
+                employee.FirstName,
+                employee.MiddleInitial,
+                employee.LastName))
+            .ToListAsync();
 }

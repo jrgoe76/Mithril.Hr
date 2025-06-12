@@ -11,7 +11,7 @@ public sealed class UpdateEmployeeFeature(
 {
     public async Task<EmployeeInfo> Update(UpdateEmployeeInfo updateEmployeeInfo)
     {
-        var employee = await getEmployeeByIdQuery.Get(updateEmployeeInfo.EmployeeId);
+        Employee employee = await getEmployeeByIdQuery.Get(updateEmployeeInfo.EmployeeId);
 
         employee.Update(
             new PersonName(updateEmployeeInfo.FirstName,

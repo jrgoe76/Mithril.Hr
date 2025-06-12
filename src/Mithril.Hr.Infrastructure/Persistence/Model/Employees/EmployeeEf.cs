@@ -24,36 +24,36 @@ public record EmployeeEf
     public ContractEf? Contract { get; set; }
 
     public EmployeeEf Update(
-	    Employee employee,
-	    GenderMapper genderMapper,
-	    AcademicDegreeMapper academicDegreeMapper,
-	    Guid version)
+        Employee employee,
+        GenderMapper genderMapper,
+        AcademicDegreeMapper academicDegreeMapper,
+        Guid version)
     {
-	    EmployeeId = employee.EmployeeId;
-	    FirstName = employee.Name.FirstName;
-	    MiddleInitial = employee.Name.MiddleInitial;
-	    LastName = employee.Name.LastName;
-	    Gender = genderMapper.MapCode(employee.Gender);
-	    EmailAddress = employee.Email.Address;
-	    AddressLine1 = employee.Address.AddressLine1;
-	    AddressLine2 = employee.Address.AddressLine2;
-	    City = employee.Address.City;
-	    State = employee.Address.State;
-	    Zipcode = employee.Address.Zipcode;
-	    Degree = academicDegreeMapper.MapCode(employee.Degree);
+        EmployeeId = employee.EmployeeId;
+        FirstName = employee.Name.FirstName;
+        MiddleInitial = employee.Name.MiddleInitial;
+        LastName = employee.Name.LastName;
+        Gender = genderMapper.MapCode(employee.Gender);
+        EmailAddress = employee.Email.Address;
+        AddressLine1 = employee.Address.AddressLine1;
+        AddressLine2 = employee.Address.AddressLine2;
+        City = employee.Address.City;
+        State = employee.Address.State;
+        Zipcode = employee.Address.Zipcode;
+        Degree = academicDegreeMapper.MapCode(employee.Degree);
         Version = version;
 
         ContractEf? contract = employee.Contract != null
             ? new ContractEf
             {
-	            PositionCode = employee.Contract.Position.PositionCode,
-	            SupervisorId = employee.Contract.SupervisorId,
-	            StartedOn = employee.Contract.StartedOn,
+                PositionCode = employee.Contract.Position.PositionCode,
+                SupervisorId = employee.Contract.SupervisorId,
+                StartedOn = employee.Contract.StartedOn,
                 EndedOn = employee.Contract.EndedOn
             }
             : null;
         Contract = contract;
 
-	    return this;
+        return this;
     }
 }

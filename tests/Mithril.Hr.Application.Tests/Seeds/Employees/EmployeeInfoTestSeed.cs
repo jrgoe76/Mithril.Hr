@@ -7,9 +7,9 @@ namespace Mithril.Hr.Application.Tests.Seeds.Employees;
 
 public static class EmployeeInfoTestSeed
 {
-	private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
+    private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
 
-    public static EmployeeInfo LiamHill = new (
+    public static EmployeeInfo LiamHill = new(
         _liamHill.EmployeeId,
         _liamHill.Name.FirstName,
         _liamHill.Name.MiddleInitial,
@@ -25,26 +25,26 @@ public static class EmployeeInfoTestSeed
 
     public static EmployeeInfo DianaKingWithContract(DateOnly startedOn)
     {
-	    var dianaKing = EmployeeTestSeed.DianaKingWithContract(startedOn);
-	    var contract = dianaKing.Contract!;
+        var dianaKing = EmployeeTestSeed.DianaKingWithContract(startedOn);
+        var contract = dianaKing.Contract!;
 
-	    return new EmployeeInfo(
-		    dianaKing.EmployeeId,
-		    dianaKing.Name.FirstName,
-		    dianaKing.Name.MiddleInitial,
-		    dianaKing.Name.LastName,
-		    dianaKing.Gender.ToString(),
-		    dianaKing.Email.Address,
-		    dianaKing.Address.AddressLine1,
-		    dianaKing.Address.AddressLine2,
-		    dianaKing.Address.City,
-		    dianaKing.Address.State,
-		    dianaKing.Address.Zipcode,
-		    dianaKing.Degree.ToString(),
-		    new ContractInfo(
-			    contract.Position.PositionCode,
-			    contract.SupervisorId,
-			    contract.StartedOn,
-			    contract.EndedOn));
+        return new EmployeeInfo(
+            dianaKing.EmployeeId,
+            dianaKing.Name.FirstName,
+            dianaKing.Name.MiddleInitial,
+            dianaKing.Name.LastName,
+            dianaKing.Gender.ToString(),
+            dianaKing.Email.Address,
+            dianaKing.Address.AddressLine1,
+            dianaKing.Address.AddressLine2,
+            dianaKing.Address.City,
+            dianaKing.Address.State,
+            dianaKing.Address.Zipcode,
+            dianaKing.Degree.ToString(),
+            new ContractInfo(
+                contract.Position.PositionCode,
+                contract.SupervisorId,
+                contract.StartedOn,
+                contract.EndedOn));
     }
 }

@@ -3,14 +3,14 @@
 namespace Mithril.Hr.Application.Features.Positions;
 
 public sealed class AddPositionFeature(
-	IPositionRepository positionRepository)
+    IPositionRepository positionRepository)
 {
-	public async Task<PositionInfo> Add(PositionInfo addPositionInfo)
-	{
-		var position = new Position(addPositionInfo.PositionCode, addPositionInfo.Name);
+    public async Task<PositionInfo> Add(PositionInfo addPositionInfo)
+    {
+        Position position = new(addPositionInfo.PositionCode, addPositionInfo.Name);
 
-		await positionRepository.Add(position);
+        await positionRepository.Add(position);
 
-		return new PositionInfo(position.PositionCode, position.Name);
-	}
+        return new PositionInfo(position.PositionCode, position.Name);
+    }
 }

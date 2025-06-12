@@ -6,8 +6,8 @@ namespace Mithril.Hr.Domain.Tests.Model.Demographics;
 
 public sealed class GenderTests
 {
-	[Theory]
-	[InlineData("XXX")]
+    [Theory]
+    [InlineData("XXX")]
     public void Throws_an_error_caused_by_an_invalid_Gender(string gender)
     {
         ((Func<Gender>)(() => new Gender(gender)))

@@ -16,10 +16,10 @@ internal sealed class EmployeeConfiguration : IEntityTypeConfiguration<EmployeeE
             .ValueGeneratedNever();
 
         builder.Property(entity => entity.FirstName)
-	        .IsRequired()
-	        .HasMaxLength(50);
+            .IsRequired()
+            .HasMaxLength(50);
         builder.Property(value => value.MiddleInitial)
-			.HasMaxLength(1);
+            .HasMaxLength(1);
         builder.Property(value => value.LastName)
             .IsRequired()
             .HasMaxLength(50);
@@ -35,7 +35,7 @@ internal sealed class EmployeeConfiguration : IEntityTypeConfiguration<EmployeeE
             .IsRequired()
             .HasMaxLength(100);
         builder.Property(value => value.AddressLine2)
-			.HasMaxLength(50);
+            .HasMaxLength(50);
         builder.Property(value => value.City)
             .IsRequired()
             .HasMaxLength(50);

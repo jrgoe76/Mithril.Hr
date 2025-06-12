@@ -10,7 +10,7 @@ internal sealed class DbContextTestFactory : IDisposable
         = GetInitializedDbConnection();
 
     public static DbContextTestFactory New()
-        => new ();
+        => new();
 
     public DataContextSpy Create()
     {

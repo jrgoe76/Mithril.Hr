@@ -64,7 +64,7 @@ public sealed class EmployeesControllerTests : IntegrationTestBase
     [Fact]
     public async Task Updates_an_Employee()
     {
-	    var dianaKingEf = EmployeeEfTestSeed.DianaKing();
+        var dianaKingEf = EmployeeEfTestSeed.DianaKing();
         var dianaKingUpdateInfo = UpdateEmployeeInfoTestSeed.DianaKing;
 
         await DbContext.Employees.AddAsync(dianaKingEf);

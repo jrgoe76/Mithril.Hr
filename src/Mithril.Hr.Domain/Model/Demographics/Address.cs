@@ -21,14 +21,17 @@ public record Address
         {
             throw new ArgumentException(errorMessage, nameof(addressLine1));
         }
+
         if (string.IsNullOrEmpty(city))
         {
             throw new ArgumentException(errorMessage, nameof(city));
         }
+
         if (string.IsNullOrEmpty(state))
         {
             throw new ArgumentException(errorMessage, nameof(state));
         }
+
         if (string.IsNullOrEmpty(zipcode))
         {
             throw new ArgumentException(errorMessage, nameof(zipcode));

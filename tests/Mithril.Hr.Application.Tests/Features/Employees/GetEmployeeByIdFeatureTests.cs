@@ -20,11 +20,11 @@ public sealed class GetEmployeeByIdFeatureTests
 
         getEmployeeByIdQueryMock
             .ArrangeGetEmployeeById(liamHill);
-        
+
         (await new GetEmployeeByIdFeature(
-                getEmployeeByIdQueryMock.Object, 
-                employeeInfoMapper)
-            .Get(liamHill.EmployeeId))
+                    getEmployeeByIdQueryMock.Object,
+                    employeeInfoMapper)
+                .Get(liamHill.EmployeeId))
             .Should().Be(liamHillInfo);
     }
 }

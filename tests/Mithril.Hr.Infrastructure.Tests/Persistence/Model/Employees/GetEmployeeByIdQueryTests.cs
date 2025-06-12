@@ -14,7 +14,7 @@ public sealed class GetEmployeeByIdQueryTests
     [Fact]
     public async Task Returns_an_Employee_by_its_Id()
     {
-	    var liamHill = EmployeeSeed.LiamHill();
+        var liamHill = EmployeeSeed.LiamHill();
         var liamHillEf = EmployeeEfTestSeed.LiamHill();
         var dianaKingEf = EmployeeEfTestSeed.DianaKing();
 
@@ -25,9 +25,9 @@ public sealed class GetEmployeeByIdQueryTests
         await dbContext.SaveChangesAsync();
 
         (await new GetEmployeeByIdQuery(
-		        dbContext,
-                new EmployeeMapper(new GenderMapper(), new AcademicDegreeMapper()))
-			.Get(liamHillEf.EmployeeId))
+                    dbContext,
+                    new EmployeeMapper(new GenderMapper(), new AcademicDegreeMapper()))
+                .Get(liamHillEf.EmployeeId))
             .Should().Be(liamHill);
     }
 }

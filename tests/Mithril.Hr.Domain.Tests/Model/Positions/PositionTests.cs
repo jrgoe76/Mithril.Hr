@@ -17,6 +17,7 @@ public sealed class PositionTests
         ((Func<Position>)(() => new Position(positionCode!, _name)))
             .Should().Throw<ArgumentException>();
     }
+
     [Theory]
     [InlineData(null)]
     [InlineData("")]

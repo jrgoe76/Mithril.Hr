@@ -11,8 +11,8 @@ public sealed class AssignContractToEmployeeFeature(
 {
     public async Task<EmployeeInfo> Assign(AssignContractInfo assignContractInfo)
     {
-        var employee = await getEmployeeByIdQuery.Get(assignContractInfo.EmployeeId);
-        var position = await getPositionByCodeQuery.Get(assignContractInfo.PositionCode);
+        Employee employee = await getEmployeeByIdQuery.Get(assignContractInfo.EmployeeId);
+        Position position = await getPositionByCodeQuery.Get(assignContractInfo.PositionCode);
 
         employee.AssignContract(position, assignContractInfo.SupervisorId, assignContractInfo.StartDate);
 

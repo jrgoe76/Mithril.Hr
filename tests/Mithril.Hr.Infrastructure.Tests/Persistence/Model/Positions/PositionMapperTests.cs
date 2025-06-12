@@ -8,10 +8,10 @@ namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Positions;
 
 public sealed class PositionMapperTests
 {
-	[Fact]
-	public void Maps_Position()
-	{
-		new PositionMapper().Map(PositionEfTestSeed.ChiefExecutiveOfficer())
-			.Should().Be(PositionSeed.ChiefExecutiveOfficer);
-	}
+    [Fact]
+    public void Maps_Position()
+    {
+        new PositionMapper().Map(PositionEfTestSeed.ChiefExecutiveOfficer())
+            .Should().Be(PositionSeed.ChiefExecutiveOfficer);
+    }
 }

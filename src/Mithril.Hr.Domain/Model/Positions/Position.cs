@@ -15,6 +15,7 @@ public record Position
         {
             throw new ArgumentException(errorMessage, nameof(positionCode));
         }
+
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException(errorMessage, nameof(name));

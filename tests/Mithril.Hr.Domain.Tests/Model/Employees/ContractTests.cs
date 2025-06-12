@@ -25,13 +25,13 @@ public sealed class ContractTests
     [Fact]
     public void Creates_a_new_Contract_from_this_with_EndedOn()
     {
-		var today = DateOnly.FromDateTime(DateTime.Today);
-		var tomorrow = today.AddDays(1);
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        var tomorrow = today.AddDays(1);
 
         var dianaKing = EmployeeTestSeed.DianaKingWithContract(today);
         var contract = dianaKing.Contract!.GetEndedOn(tomorrow);
 
         contract.EndedOn
-	        .Should().Be(tomorrow);
+            .Should().Be(tomorrow);
     }
 }

@@ -6,9 +6,9 @@ namespace Mithril.Hr.Application.Tests.Seeds.Employees;
 
 public static class UpdateEmployeeInfoTestSeed
 {
-	private static readonly Employee _updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
+    private static readonly Employee _updatedDianaKing = EmployeeTestSeed.UpdatedDianaKing();
 
-	public static UpdateEmployeeInfo DianaKing = new (
+    public static UpdateEmployeeInfo DianaKing = new(
         _updatedDianaKing.EmployeeId,
         _updatedDianaKing.Name.FirstName,
         _updatedDianaKing.Name.MiddleInitial,

@@ -11,7 +11,7 @@ public sealed class GenderMapper
     }
 
     public Gender Map(char code)
-	    => new(GetGender(code));
+        => new(GetGender(code));
 
     public char MapCode(Gender gender)
         => GetCode(gender);

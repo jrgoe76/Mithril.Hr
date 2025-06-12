@@ -17,6 +17,7 @@ public record PersonName
         {
             throw new ArgumentException(errorMessage, nameof(firstName));
         }
+
         if (string.IsNullOrEmpty(lastName))
         {
             throw new ArgumentException(errorMessage, nameof(lastName));

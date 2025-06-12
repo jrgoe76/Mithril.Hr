@@ -11,48 +11,48 @@ namespace Mithril.Hr.Infrastructure.Tests.Persistence.Model.Employees;
 
 public sealed class EmployeeEfTests
 {
-	[Fact]
-	public void Updates_an_Employee()
-	{
+    [Fact]
+    public void Updates_an_Employee()
+    {
         var liamHill = EmployeeSeed.LiamHill();
         var liamHillEf = EmployeeEfTestSeed.LiamHill();
 
         var latestVersion = liamHillEf.Version;
         var version = Guid.NewGuid();
-		liamHillEf.Version = version;
+        liamHillEf.Version = version;
 
-		new EmployeeEf { EmployeeId = liamHill.EmployeeId }
-			.Update(
-				liamHill,
-				new GenderMapper(),
-				new AcademicDegreeMapper(),
-				version)
-			.Should().Be(liamHillEf);
-		latestVersion
-			.Should().NotBe(version);
-	}
+        new EmployeeEf { EmployeeId = liamHill.EmployeeId }
+            .Update(
+                liamHill,
+                new GenderMapper(),
+                new AcademicDegreeMapper(),
+                version)
+            .Should().Be(liamHillEf);
+        latestVersion
+            .Should().NotBe(version);
+    }
 
     [Fact]
-	public void Updates_an_Employee_with_Contract()
-	{
+    public void Updates_an_Employee_with_Contract()
+    {
         var today = DateOnly.FromDateTime(DateTime.Today);
         var tomorrow = today.AddDays(1);
 
         var dianaKing = EmployeeTestSeed.DianaKingWithContract(today, tomorrow);
         var dianaKingEf = EmployeeEfTestSeed.DianaKingWithContract(today, tomorrow);
 
-		var latestVersion = dianaKingEf.Version;
-	    var version = Guid.NewGuid();
-	    dianaKingEf.Version = version;
-		
+        var latestVersion = dianaKingEf.Version;
+        var version = Guid.NewGuid();
+        dianaKingEf.Version = version;
+
         new EmployeeEf { EmployeeId = dianaKing.EmployeeId }
-			.Update(
-				dianaKing,
-				new GenderMapper(),
-				new AcademicDegreeMapper(),
-				version)
-			.Should().Be(dianaKingEf);
+            .Update(
+                dianaKing,
+                new GenderMapper(),
+                new AcademicDegreeMapper(),
+                version)
+            .Should().Be(dianaKingEf);
         latestVersion
-	        .Should().NotBe(version);
-	}
+            .Should().NotBe(version);
+    }
 }

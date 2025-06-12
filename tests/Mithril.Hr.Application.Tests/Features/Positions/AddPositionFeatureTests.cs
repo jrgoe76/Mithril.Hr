@@ -10,10 +10,10 @@ namespace Mithril.Hr.Application.Tests.Features.Positions;
 
 public sealed class AddPositionFeatureTests
 {
-	private readonly Position _ceo = PositionSeed.ChiefExecutiveOfficer;
+    private readonly Position _ceo = PositionSeed.ChiefExecutiveOfficer;
     private readonly PositionInfo _ceoInfo = PositionInfoSeed.ChiefExecutiveOfficer;
 
-    private readonly Mock<IPositionRepository> _positionRepositoryMock = new ();
+    private readonly Mock<IPositionRepository> _positionRepositoryMock = new();
 
     [Fact]
     public async Task Returns_a_PositionInfo()
@@ -31,7 +31,7 @@ public sealed class AddPositionFeatureTests
     }
 
     private AddPositionFeature GetFeature()
-        => new (_positionRepositoryMock.Object);
+        => new(_positionRepositoryMock.Object);
 
     private void VerifyRepositoryWasCalled()
         => _positionRepositoryMock

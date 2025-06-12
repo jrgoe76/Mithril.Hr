@@ -5,7 +5,7 @@ namespace Mithril.Hr.Application.Features.Employees;
 public sealed class EmployeeInfoMapper
 {
     public EmployeeInfo Map(Employee employee)
-        => new (
+        => new(
             employee.EmployeeId,
             employee.Name.FirstName, employee.Name.MiddleInitial, employee.Name.LastName,
             employee.Gender.ToString(),
@@ -16,11 +16,11 @@ public sealed class EmployeeInfoMapper
             MapContract(employee.Contract));
 
     private ContractInfo? MapContract(Contract? contract)
-	    => contract != null
-			? new ContractInfo(
-				contract.Position.PositionCode,
-				contract.SupervisorId,
-				contract.StartedOn,
-				contract.EndedOn)
-			: null;
+        => contract != null
+            ? new ContractInfo(
+                contract.Position.PositionCode,
+                contract.SupervisorId,
+                contract.StartedOn,
+                contract.EndedOn)
+            : null;
 }

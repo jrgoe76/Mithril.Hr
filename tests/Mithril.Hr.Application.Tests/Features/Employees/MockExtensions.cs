@@ -16,7 +16,7 @@ internal static class MockExtensions
         => mock.Setup(query => query.Get(employee.EmployeeId))
             .ReturnsAsync(employee);
 
-    public static void ArrangeGetPositionByCode(this Mock<IGetPositionByCodeQuery> mock, Position position) 
+    public static void ArrangeGetPositionByCode(this Mock<IGetPositionByCodeQuery> mock, Position position)
         => mock.Setup(query => query.Get(position.PositionCode))
             .ReturnsAsync(position);
 }

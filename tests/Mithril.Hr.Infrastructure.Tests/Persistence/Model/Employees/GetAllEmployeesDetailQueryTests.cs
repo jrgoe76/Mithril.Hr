@@ -14,7 +14,7 @@ public sealed class GetAllEmployeesDetailQueryTests
     {
         var liamHillEf = EmployeeEfTestSeed.LiamHill();
 
-	    using var dbContextFactory = DbContextTestFactory.New();
+        using var dbContextFactory = DbContextTestFactory.New();
         await using var dbContext = dbContextFactory.Create();
 
         await dbContext.Employees.AddAsync(liamHillEf);

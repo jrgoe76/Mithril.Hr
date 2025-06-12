@@ -19,10 +19,10 @@ public sealed class AssignContractToEmployeeFeatureTests
     private readonly Employee _dianaKing = EmployeeSeed.DianaKing();
     private readonly Employee _dianaKingWithContract = EmployeeTestSeed.DianaKingWithContract(_today);
 
-    private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new ();
-    private readonly Mock<IGetPositionByCodeQuery> _getPositionByCodeQueryMock = new ();
-    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new ();
-    private readonly EmployeeInfoMapper _employeeInfoMapper = new ();
+    private readonly Mock<IGetEmployeeByIdQuery> _getEmployeeByIdQueryMock = new();
+    private readonly Mock<IGetPositionByCodeQuery> _getPositionByCodeQueryMock = new();
+    private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new();
+    private readonly EmployeeInfoMapper _employeeInfoMapper = new();
 
     [Fact]
     public async Task Returns_an_EmployeeInfo()
@@ -56,9 +56,9 @@ public sealed class AssignContractToEmployeeFeatureTests
         => _getPositionByCodeQueryMock.ArrangeGetPositionByCode(position);
 
     private AssignContractToEmployeeFeature GetFeature()
-	    => new (
-		    _getEmployeeByIdQueryMock.Object,
-		    _getPositionByCodeQueryMock.Object,
-		    _employeeRepositoryMock.Object,
-		    _employeeInfoMapper);
+        => new(
+            _getEmployeeByIdQueryMock.Object,
+            _getPositionByCodeQueryMock.Object,
+            _employeeRepositoryMock.Object,
+            _employeeInfoMapper);
 }

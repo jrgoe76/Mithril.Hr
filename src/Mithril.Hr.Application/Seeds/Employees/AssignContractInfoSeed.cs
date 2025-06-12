@@ -10,10 +10,10 @@ public static class AssignContractInfoSeed
     private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
     private static readonly Employee _dianaKing = EmployeeSeed.DianaKing();
 
-    public static AssignContractInfo DianaKing(DateOnly startDate) 
-	    => new (
-			_dianaKing.EmployeeId,
-			PositionSeed.ChiefFinancialOfficer.PositionCode,
-			_liamHill.EmployeeId,
-			startDate);
+    public static AssignContractInfo DianaKing(DateOnly startDate)
+        => new(
+            _dianaKing.EmployeeId,
+            PositionSeed.ChiefFinancialOfficer.PositionCode,
+            _liamHill.EmployeeId,
+            startDate);
 }

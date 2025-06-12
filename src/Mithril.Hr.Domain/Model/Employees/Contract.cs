@@ -11,7 +11,7 @@ public record Contract
 
     public Contract(
         Position position,
-        Guid? supervisorId, 
+        Guid? supervisorId,
         DateOnly startedOn)
     {
         const string errorMessage = $"The {nameof(Employee)} is invalid";
@@ -28,14 +28,11 @@ public record Contract
 
     public Contract(
         Position position,
-	    DateOnly startedOn)
+        DateOnly startedOn)
         : this(position, null, startedOn)
     {
     }
 
     public Contract GetEndedOn(DateOnly endedOn)
-	    => new (Position, SupervisorId, StartedOn)
-        {
-            EndedOn = endedOn
-        };
+        => new(Position, SupervisorId, StartedOn) { EndedOn = endedOn };
 }

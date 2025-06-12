@@ -5,8 +5,8 @@ namespace Mithril.Hr.Domain.Seeds.Employees;
 
 public static class ContractSeed
 {
-	private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
+    private static readonly Employee _liamHill = EmployeeSeed.LiamHill();
 
-	public static Contract DianaKing(DateOnly startedOn)
-		=> new (PositionSeed.ChiefFinancialOfficer, _liamHill.EmployeeId, startedOn);
+    public static Contract DianaKing(DateOnly startedOn)
+        => new(PositionSeed.ChiefFinancialOfficer, _liamHill.EmployeeId, startedOn);
 }

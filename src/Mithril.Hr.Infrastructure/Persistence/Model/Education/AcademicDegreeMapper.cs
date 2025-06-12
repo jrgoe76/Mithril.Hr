@@ -22,7 +22,7 @@ public sealed class AcademicDegreeMapper
         };
 
     public AcademicDegree Map(string code)
-	    => new (GetAcademicDegree(code));
+        => new(GetAcademicDegree(code));
 
     public string MapCode(AcademicDegree academicDegree)
         => GetCode(academicDegree);

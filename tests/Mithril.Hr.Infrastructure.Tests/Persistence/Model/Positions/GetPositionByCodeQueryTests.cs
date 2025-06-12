@@ -21,9 +21,9 @@ public sealed class GetPositionByCodeQueryTests
         await dbContext.SaveChangesAsync();
 
         (await new GetPositionByCodeQuery(
-			    dbContext,
-			    new PositionMapper())
-            .Get(PositionSeed.ChiefExecutiveOfficer.PositionCode))
+                    dbContext,
+                    new PositionMapper())
+                .Get(PositionSeed.ChiefExecutiveOfficer.PositionCode))
             .Should().Be(PositionSeed.ChiefExecutiveOfficer);
     }
 }

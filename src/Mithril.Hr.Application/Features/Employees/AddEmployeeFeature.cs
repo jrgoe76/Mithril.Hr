@@ -12,15 +12,15 @@ public sealed class AddEmployeeFeature(
 {
     public async Task<EmployeeInfo> Add(AddEmployeeInfo addEmployeeInfo)
     {
-        var employeeId = idGenerator.New();
+        Guid employeeId = idGenerator.New();
 
-        var employee = new Employee(employeeId,
-			new PersonName(addEmployeeInfo.FirstName, addEmployeeInfo.MiddleInitial, addEmployeeInfo.LastName),
-			new Gender(addEmployeeInfo.Gender),
-			new Email(addEmployeeInfo.EmailAddress),
-			new Address(addEmployeeInfo.AddressLine1, addEmployeeInfo.AddressLine2,
-			    addEmployeeInfo.City, addEmployeeInfo.State, addEmployeeInfo.Zipcode),
-			new AcademicDegree(addEmployeeInfo.Degree));
+        Employee employee = new(employeeId,
+            new PersonName(addEmployeeInfo.FirstName, addEmployeeInfo.MiddleInitial, addEmployeeInfo.LastName),
+            new Gender(addEmployeeInfo.Gender),
+            new Email(addEmployeeInfo.EmailAddress),
+            new Address(addEmployeeInfo.AddressLine1, addEmployeeInfo.AddressLine2,
+                addEmployeeInfo.City, addEmployeeInfo.State, addEmployeeInfo.Zipcode),
+            new AcademicDegree(addEmployeeInfo.Degree));
 
         await employeeRepository.Add(employee);
 

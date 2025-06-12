@@ -48,7 +48,7 @@ public sealed class EmployeeRepositoryTests
     }
 
     private static EmployeeRepository GetRepository(DataContext dbContext)
-        => new (
+        => new(
             dbContext,
             new GenderMapper(),
             new AcademicDegreeMapper());

@@ -21,7 +21,7 @@ internal sealed class PositionConfiguration : IEntityTypeConfiguration<PositionE
             .HasMaxLength(100);
 
         builder.Property(entity => entity.Version)
-	        .IsRequired()
-	        .IsConcurrencyToken();
+            .IsRequired()
+            .IsConcurrencyToken();
     }
 }

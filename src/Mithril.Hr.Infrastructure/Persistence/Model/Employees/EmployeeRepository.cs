@@ -22,10 +22,10 @@ internal sealed class EmployeeRepository(
 
     public async Task Update(Employee employee)
     {
-	    var employeeEf = await dbContext.Employees
-		    .SingleAsync(entity => entity.EmployeeId == employee.EmployeeId);
+        var employeeEf = await dbContext.Employees
+            .SingleAsync(entity => entity.EmployeeId == employee.EmployeeId);
 
-	    employeeEf.Update(employee, genderMapper, academicDegreeMapper, Guid.NewGuid());
+        employeeEf.Update(employee, genderMapper, academicDegreeMapper, Guid.NewGuid());
 
         dbContext.Attach(employeeEf);
         await dbContext.SaveChangesAsync();
